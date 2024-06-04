@@ -43,6 +43,46 @@ nav a.active::after {
     left: 0;
 }
 
+/* About Page */
+.text-center-about {
+    text-align: center;
+}
+
+.section {
+    padding: 50px 0;
+}
+
+.section h2 {
+    margin-bottom: 20px;
+}
+
+.founders-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.founder {
+    background: #f5f5f5;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.founder img {
+    width: 100px;
+    height: 100px;
+}
+
+.founder h3 {
+    margin: 10px 0;
+}
+
+.founder p {
+    margin: 10px 0;
+    font-style: italic; /* Makes the quote italic */
+}
+
 .hero, .about-section {
     position: relative;
     background: #f5f5f5;
@@ -289,3 +329,7 @@ nav a.active::after {
         opacity: 0; /* Fade out at the top */
     }
 }
+
+/* * {
+  border: 1px solid #ff0000;;
+} */
