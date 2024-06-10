@@ -1,6 +1,7 @@
 /* app.css */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'PF Lindemann Sans', sans-serif;
+    font-weight: 800; /* This sets the font weight to ExtraBold */
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -23,6 +24,50 @@ header .container {
     justify-content: space-between;
     align-items: center;
 }
+
+.nav-item.nav-link.signin {
+    /* Add a border to the button */
+    border: 2px solid #007bff; /* Change this to the color of your theme */
+    border-radius: 5px; /* This makes the border rounded. Adjust as needed. */
+    transition: all .3s; /* This makes the color change smoothly */
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.nav-item.nav-link.signin::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #0cf;
+    border-radius: 10rem;
+    z-index: -2;
+}
+
+.nav-item.nav-link.signin::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background-color: #0086ad;
+    transition: all .3s;
+    border-radius: 10rem;
+    z-index: -1;
+}
+
+.nav-item.nav-link.signin:hover {
+    color: #fff;
+}
+
+.nav-item.nav-link.signin:hover::before {
+    width: 100%;
+}
+
 
 .footer {
     background: #f5f5f5;
@@ -93,6 +138,28 @@ nav a.active::after {
     font-style: italic; /* Makes the quote italic */
 }
 
+.hero {
+    position: relative; /* This allows absolute positioning within .hero */
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(to left, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7));
+}
+
+.hero-text {
+    position: absolute;
+    top: 35%; /* Adjust this value to move the overlay up or down */
+    left: 10%; /* Adjust this value to move the overlay left or right */
+    text-align: left;
+    color: #f5f5f5;
+}
+
 .hero, .about-section {
     position: relative;
     background: #f5f5f5;
@@ -108,6 +175,7 @@ nav a.active::after {
 
 .hero-text, .about-section .container {
     max-width: 50%;
+    text-align: left;
 }
 
 .hero-image img, .about-section .container img {
@@ -132,14 +200,14 @@ nav a.active::after {
     color: white;
 }
 
-.hero-overlay {
+/* .hero-overlay {
     position: absolute;
     top: 20%;
     right: 5%;
     display: flex;
     flex-direction: column;
     gap: 20px;
-}
+} */
 
 /* Services */
 .services-section {
@@ -148,28 +216,96 @@ nav a.active::after {
 }
 
 /* Home Page */
+/* Ellipse styling */
+/* Ellipse boxes for services section */
+.ellipse-box-services {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 200px; /* Reduced width */
+    height: 200px; /* Reduced height */
+    background-color: #f5f5f5;
+    border-radius: 50%;
+    text-align: center;
+    margin: 20px auto;
+    padding: 20px;
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+.ellipse-box-services:hover {
+    transform: scale(1.05);
+    background-color: #e0e0e0;
+}
+
+/* Ellipse boxes for why choose us section */
+.ellipse-box-why {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 200px; /* Reduced width */
+    height: 200px; /* Reduced height */
+    background-color: #fff0f5;
+    border-radius: 50%;
+    text-align: center;
+    margin: 20px auto;
+    padding: 20px;
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+.ellipse-box-why:hover {
+    transform: scale(1.05);
+    background-color: #ffe4e1;
+}
+
 .services-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.why-choose-us-grid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
 .service-box {
     background: #f5f5f5;
-    padding: 20px;
-    border-radius: 5px;
+    padding: 15px; /* Reduced padding */
+    border-radius: 10px;
     text-align: center;
-    transition: background 0.3s ease;
+    margin: 10px;
+    flex: 1 1 calc(25% - 20px); /* Reduced size */
+    transition: transform 0.3s, background-color 0.3s;
 }
 
 .service-box:hover {
-    background: #007bff;
-    color: white;
+    transform: scale(1.05);
+    background-color: #e0e0e0;
 }
 
-.service-box:hover .btn {
-    background: #f1c40f; /* Changes the background color of the button to yellow when the service box is hovered over */
-    color: black; /* Changes the text color of the button to black when the service box is hovered over */
+.service-box img,
+.ellipse-box-services img,
+.ellipse-box-why img {
+    width: 50%; /* Reduced image size */
+    height: auto;
+    margin-bottom: 10px; /* Reduced margin */
+}
+
+@media (max-width: 768px) {
+    .service-box, .ellipse-box-services, .ellipse-box-why {
+        flex: 1 1 calc(50% - 20px);
+    }
+}
+
+@media (max-width: 576px) {
+    .service-box, .ellipse-box-services, .ellipse-box-why {
+        flex: 1 1 100%;
+    }
 }
 
 .service-box img {
@@ -286,6 +422,7 @@ nav a.active::after {
 
     .hero-text, .hero-image, .about-section .container, .about-section .container img {
         max-width: 100%;
+        text-align: left;
     }
 }
 
@@ -334,7 +471,7 @@ nav a.active::after {
     }
 }
 
-/* * {
+* {
   border: 1px solid #ff0000;;
-} */
+}
 
