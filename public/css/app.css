@@ -27,8 +27,8 @@ header .container {
 
 .nav-item.nav-link.signin {
     /* Add a border to the button */
-    border: 2px solid #007bff; /* Change this to the color of your theme */
-    border-radius: 5px; /* This makes the border rounded. Adjust as needed. */
+    /* border: 2px solid #007bff; Change this to the color of your theme */
+    border-radius: 50%; /* This makes the button an ellipse */
     transition: all .3s; /* This makes the color change smoothly */
     position: relative;
     overflow: hidden;
@@ -471,7 +471,17 @@ nav a.active::after {
     }
 }
 
-* {
-  border: 1px solid #ff0000;;
+/* about page */
+.container-contact {
+    margin-top: 40px; /* Adjust as needed */
+    margin-bottom: 40px; /* Adjust as needed */
 }
+
+#map {
+    width: 100%;
+}
+
+/* * {
+  border: 1px solid #ff0000;;
+} */
 

@@ -5,8 +5,9 @@
     <div class="hero">
         <div class="container hero-content">
             <div class="hero-text">
-                <p class="forOne">We Do Laundry For You</p>
-                <p class="forTwo">Proin et ante sed lectus convallis ultricies. Vestibulum ut augue mi.</p>
+                <p class="forOne" style="font-size: 2em;" >Welcome to Sarifna Laundry</p>
+                <p class="forTwo">Pakaian - Selimut - Bedcover - Karpet - dll</p>
+                <p class="forTwo">Your laundry, our care</p>
                 <div class="hero-buttons">
                     <a href="{{ route('get-started') }}" class="btn btn-primary">Get Started</a>
                     <a href="{{ route('learn-more') }}" class="btn btn-secondary">Learn More</a>
@@ -40,22 +41,20 @@
     </div>
 
     <div id="why-choose-us" class="why-choose-us-section">
-
-            <h2>Why Choose Our Laundry</h2>
-            <div class="why-choose-us-grid">
-                <div class="why-choose-us-item ellipse-box-why">
-                    <h3>Quality Service</h3>
-                    <p>We use the best detergents and modern laundry machines to ensure your clothes are perfectly clean.</p>
-                </div>
-                <div class="why-choose-us-item ellipse-box-why">
-                    <h3>Fast Delivery</h3>
-                    <p>We deliver your clothes back to you within 24 hours. We value your time.</p>
-                </div>
-                <div class="why-choose-us-item ellipse-box-why">
-                    <h3>Affordable Prices</h3>
-                    <p>Our prices are competitive and affordable. We believe in providing value for your money.</p>
-                </div>
+        <h2>Why Choose Our Laundry</h2>
+        <div class="why-choose-us-grid">
+            <div class="why-choose-us-item ellipse-box-why">
+                <h3>✅ Layanan Cepat</h3>
+                <p>We provide fast service to ensure your laundry needs are met in a timely manner.</p>
             </div>
-
+            <div class="why-choose-us-item ellipse-box-why">
+                <h3>✅ Dijamin Murah</h3>
+                <p>Our services are guaranteed to be affordable, providing value for your money.</p>
+            </div>
+            <div class="why-choose-us-item ellipse-box-why">
+                <h3>✅ Bersih dan Wangi</h3>
+                <p>We ensure your clothes are clean and fresh, leaving them smelling great.</p>
+            </div>
+        </div>
     </div>
 @endsection

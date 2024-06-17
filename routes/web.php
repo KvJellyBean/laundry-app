@@ -35,6 +35,19 @@ Route::get('/learn-more', function () {
     return redirect('/services');
 })->name('learn-more');
 
+Route::get('/cuci', function () {
+    return redirect('/admin');
+})->name('cuci');
+
+Route::get('/setrika', function () {
+    return redirect('/admin');
+})->name('setrika');
+
+Route::get('/cuci-komplit', function () {
+    return redirect('/admin');
+})->name('cuci-komplit');
+
+
 
 
 

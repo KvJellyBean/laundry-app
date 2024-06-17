@@ -49,7 +49,7 @@ class LandingController extends Controller
         // Fetch or prepare data for the services section
         return [
             [
-                'title' => 'Service 1',
+                'title' => 'Cuci',
                 'description' => 'This is our most basic service.',
                 'logo' => 'service1.jpg',
                 'price' => '10',
@@ -58,7 +58,7 @@ class LandingController extends Controller
                 'link' => 'services'
             ],
             [
-                'title' => 'Service 2',
+                'title' => 'Setrika',
                 'description' => 'This is our intermediate service.',
                 'logo' => 'service2.jpg',
                 'price' => '20',
@@ -67,7 +67,7 @@ class LandingController extends Controller
                 'link' => 'services'
             ],
             [
-                'title' => 'Service 3',
+                'title' => 'Cuci Komplit',
                 'description' => 'This is our premium service.',
                 'logo' => 'service3.jpg',
                 'price' => '30',
