@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+use App\Enums\TransactionStatus;
 use App\Filament\Resources\ServicePackageResource\Pages;
 use App\Filament\Resources\ServicePackageResource\RelationManagers;
 use App\Models\ServicePackage;
@@ -25,6 +26,15 @@ class ServicePackageResource extends Resource
     protected static ?string $navigationGroup = 'Data Management';
 
     protected static ?int $navigationSort = 2;
+
+    public static function shouldRegisterNavigation(): bool
+    {
+        if(auth()->user()->can('view service packages')){
+            return true;
+        } else {
+            return false;
+        }
+    }
 
     public static function form(Form $form): Form
     {
@@ -50,10 +60,7 @@ class ServicePackageResource extends Resource
                             ->minValue(0),
                         Forms\Components\Select::make('status')
                             ->required()
-                            ->options([
-                                'active' => 'Active',
-                                'inactive' => 'Inactive',
-                            ])
+                            ->options(TransactionStatus::class)
                             ->native(false)
                             ->placeholder('Select status')
                             ->default('active'),
@@ -73,6 +80,7 @@ class ServicePackageResource extends Resource
                     ->money('idr', true)
                     ->sortable(),
                 Tables\Columns\TextColumn::make('status')
+                    ->badge()
                     ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
@@ -89,6 +97,7 @@ class ServicePackageResource extends Resource
             ->actions([
                 Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
