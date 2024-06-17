@@ -16,6 +16,15 @@ class FinancialReport extends Model
         'total_profit',
     ];
 
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::saving(function ($financialReport) {
+            $financialReport->total_profit = $financialReport->total_income - $financialReport->total_expense;
+        });
+    }
+    
     public function user()
     {
         return $this->belongsTo(User::class);
