@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\TransactionStatus;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -18,6 +19,10 @@ class Transaction extends Model
         'status',
     ];
 
+    protected $casts = [
+        'status' => TransactionStatus::class,
+    ];
+
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id')->where('role', 'user');
@@ -26,5 +31,16 @@ class Transaction extends Model
     public function order()
     {
         return $this->belongsTo(Order::class);
+    }
+    
+    protected static function booted()
+    {
+        static::updated(function ($transaction) {
+            if ($transaction->paid_at) {
+                $order = $transaction->order;
+                $order->status = 'processed';
+                $order->save();
+            }
+        });
     }
 }

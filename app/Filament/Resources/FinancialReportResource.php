@@ -24,6 +24,15 @@ class FinancialReportResource extends Resource
 
     protected static ?string $navigationGroup = 'Reports';
 
+    public static function shouldRegisterNavigation(): bool
+    {
+        if(auth()->user()->can('view financial reports')){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public static function form(Form $form): Form
     {
         return $form
@@ -40,19 +49,35 @@ class FinancialReportResource extends Resource
                     ->numeric()
                     ->placeholder('Enter total income')
                     ->minValue(0)
-                    ->prefix('Rp.'),
+                    ->prefix('Rp.')
+                    ->reactive()
+                    ->lazy()
+                    ->afterStateUpdated(function ($state, callable $set, callable $get) {
+                        $totalIncome = $state;
+                        $totalExpense = $get('total_expense') ?? 0;
+                        $totalProfit = $totalIncome - $totalExpense;
+                        $set('total_profit', $totalProfit);
+                    }),
                 Forms\Components\TextInput::make('total_expense')
                     ->required()
                     ->numeric()
                     ->placeholder('Enter total expense')
                     ->minValue(0)
-                    ->prefix('Rp.'),
+                    ->prefix('Rp.')
+                    ->reactive()
+                    ->lazy()
+                    ->afterStateUpdated(function ($state, callable $set, callable $get) {
+                        $totalIncome = $get('total_income') ?? 0;
+                        $totalExpense = $state;
+                        $totalProfit = $totalIncome - $totalExpense;
+                        $set('total_profit', $totalProfit);
+                    }),
                 Forms\Components\TextInput::make('total_profit')
-                    ->required()
+                    ->disabled()
                     ->numeric()
-                    ->placeholder('Enter total profit')
                     ->minValue(0)
-                    ->prefix('Rp.'),
+                    ->prefix('Rp.')
+                    ->reactive(),
             ]);
     }
 
@@ -87,6 +112,7 @@ class FinancialReportResource extends Resource
             ->actions([
                 Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
