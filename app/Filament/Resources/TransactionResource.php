@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+use App\Enums\TransactionStatus;
 use App\Filament\Resources\TransactionResource\Pages;
 use App\Filament\Resources\TransactionResource\RelationManagers;
 use App\Models\Transaction;
@@ -24,6 +25,15 @@ class TransactionResource extends Resource
 
     protected static ?string $navigationGroup = 'Sales';
 
+    public static function shouldRegisterNavigation(): bool
+    {
+        if(auth()->user()->can('view transactions')){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public static function form(Form $form): Form
     {
         return $form
@@ -41,14 +51,29 @@ class TransactionResource extends Resource
                     ->native(false)
                     ->preload()
                     ->searchable()
-                    ->relationship(name: 'order', titleAttribute: 'id')
-                    ->placeholder('Enter order id'),
+                    ->options(function () {
+                        return \App\Models\Order::where('status', 'processed')
+                            ->get()
+                            ->pluck('id', 'id')
+                            ->toArray();
+                    })
+                    ->placeholder('Enter order id')
+                    ->reactive()
+                    ->afterStateUpdated(function ($state, callable $set) {
+                        if ($state) {
+                            $order = \App\Models\Order::find($state);
+                            if ($order) {
+                                $set('total_payment', $order->total_price);
+                            }
+                        } else {
+                            $set('total_payment', null);
+                        }
+                    }),
                 Forms\Components\TextInput::make('total_payment')
                     ->required()
                     ->numeric()
                     ->prefix('Rp.')
-                    ->placeholder('Enter total payment')
-                    ->minValue(0),
+                    ->readonly(),
                 Forms\Components\Select::make('payment_method')
                     ->required()
                     ->options([
@@ -61,15 +86,26 @@ class TransactionResource extends Resource
                     ->placeholder('Select payment method'),
                 Forms\Components\Select::make('status')
                     ->required()
-                    ->options([
-                        'pending' => 'Pending',
-                        'paid' => 'Paid',
-                        'failed' => 'Failed',
-                    ])
+                    ->options(TransactionStatus::class)
                     ->default('pending')
                     ->native(false)
-                    ->placeholder('Select status'),
-                Forms\Components\DatePicker::make('paid_at'),
+                    ->placeholder('Select status')
+                    ->reactive()
+                    ->afterStateUpdated(function ($state, callable $set) {
+                        if ($state === 'paid') {
+                            $set('paid_at', now());
+                        } else {
+                            $set('paid_at', null);
+                        }
+                    }),
+                Forms\Components\DatePicker::make('paid_at')
+                ->reactive()
+                // change state when date is selected
+                ->afterStateUpdated(function ($state, callable $set) {
+                    if ($state) {
+                        $set('status', 'paid');
+                    }
+                }),
             ]);
     }
 
@@ -90,6 +126,7 @@ class TransactionResource extends Resource
                 Tables\Columns\TextColumn::make('payment_method')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('status')
+                    ->badge()
                     ->searchable(),
                 Tables\Columns\TextColumn::make('paid_at')
                     ->date()
@@ -115,6 +152,7 @@ class TransactionResource extends Resource
             ->actions([
                 Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
