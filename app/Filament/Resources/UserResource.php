@@ -16,6 +16,7 @@ use Filament\Infolists\Components\TextEntry;
 use Filament\Infolists\Components\Section;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Spatie\Permission\Models\Role;
 
 
 class UserResource extends Resource
@@ -28,11 +29,19 @@ class UserResource extends Resource
 
     protected static ?int $navigationSort = 1;
 
+    public static function shouldRegisterNavigation(): bool
+    {
+        if(auth()->user()->can('view user')){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                // buat section User account dan User profile
                 Forms\Components\Section::make('User account')
                     ->columns(2)
                     ->schema([
@@ -44,21 +53,18 @@ class UserResource extends Resource
                             ->email()
                             ->required()
                             ->maxLength(255)
-                            ->placeholder('Enter user email'),
+                            ->placeholder('Enter user email')
+                            ->disabledOn('edit'),
                         Forms\Components\TextInput::make('password')
                             ->password()
                             ->required()
                             ->maxLength(255)
                             ->placeholder('Enter user password'),
-                        Forms\Components\Select::make('role')
-                            ->placeholder('Select a role')
-                            ->options([
-                                'user' => 'User',
-                                'staff' => 'Staff',
-                                'admin' => 'Admin',
-                            ])
-                            ->native(false)
-                            ->default('user'),
+                        Forms\Components\Select::make('roles')
+                            ->multiple()
+                            ->relationship('roles', 'name')
+                            ->preload()
+                            ->required(),
                     ]),
                 Forms\Components\Section::make('User profile')
                     ->columns(2)
@@ -88,7 +94,7 @@ class UserResource extends Resource
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('role')
+                Tables\Columns\TextColumn::make('roles.name')
                     ->sortable()
                     ->searchable(),
                 Tables\Columns\TextColumn::make('address')
@@ -103,14 +109,10 @@ class UserResource extends Resource
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
-            ])->defaultSort('role', 'asc')
+            ])->defaultSort('roles.name', 'asc')
             ->filters([
-                SelectFilter::make('role')
-                    ->options([
-                        'user' => 'User',
-                        'staff' => 'Staff',
-                        'admin' => 'Admin',
-                    ])
+                Tables\Filters\SelectFilter::make('role')
+                    ->options(Role::pluck('name', 'id')->toArray())
                     ->label('Role')
                     ->placeholder('Filter by role')
                     ->searchable(true),
@@ -118,6 +120,7 @@ class UserResource extends Resource
             ->actions([
                 Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
