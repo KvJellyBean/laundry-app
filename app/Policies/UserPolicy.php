@@ -12,7 +12,7 @@ class UserPolicy
      */
     public function viewAny(User $user): bool
     {
-        if(auth()->user()->role == 'admin') {
+        if(auth()->user()->can('view user')){
             return true;
         } else {
             return false;
@@ -24,7 +24,7 @@ class UserPolicy
      */
     public function view(User $user, User $model): bool
     {
-        if(auth()->user()->role == 'admin' || auth()->user()->role == 'staff'){
+        if(auth()->user()->can('view user')){
             return true;
         } else {
             return false;
@@ -36,7 +36,7 @@ class UserPolicy
      */
     public function create(User $user): bool
     {
-        if(auth()->user()->role == 'admin') {
+        if(auth()->user()->can('create user')){
             return true;
         } else {
             return false;
@@ -48,7 +48,7 @@ class UserPolicy
      */
     public function update(User $user, User $model): bool
     {
-        if(auth()->user()->role == 'admin') {
+        if(auth()->user()->can('edit user')){
             return true;
         } else {
             return false;
@@ -60,7 +60,7 @@ class UserPolicy
      */
     public function delete(User $user, User $model): bool
     {
-        if(auth()->user()->role == 'admin') {
+        if(auth()->user()->can('edit user')){
             return true;
         } else {
             return false;
@@ -72,7 +72,7 @@ class UserPolicy
      */
     public function restore(User $user, User $model): bool
     {
-        if(auth()->user()->role == 'admin') {
+        if(auth()->user()->can('edit user')){
             return true;
         } else {
             return false;
@@ -84,7 +84,7 @@ class UserPolicy
      */
     public function forceDelete(User $user, User $model): bool
     {
-        if(auth()->user()->role == 'admin') {
+        if(auth()->user()->hasRole('admin')){
             return true;
         } else {
             return false;
