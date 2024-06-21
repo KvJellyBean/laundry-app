@@ -3,19 +3,15 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\UserResource\Pages;
-use App\Filament\Resources\UserResource\RelationManagers;
 use App\Models\User;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Infolists\Infolist;
 use Filament\Resources\Resource;
 use Filament\Tables;
-use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 use Filament\Infolists\Components\TextEntry;
 use Filament\Infolists\Components\Section;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Spatie\Permission\Models\Role;
 
 
@@ -61,9 +57,10 @@ class UserResource extends Resource
                             ->maxLength(255)
                             ->placeholder('Enter user password'),
                         Forms\Components\Select::make('roles')
-                            ->multiple()
                             ->relationship('roles', 'name')
                             ->preload()
+                            ->selectablePlaceholder(false)
+                            ->default(Role::where('name', 'user')->first()->id)
                             ->required(),
                     ]),
                 Forms\Components\Section::make('User profile')
