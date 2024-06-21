@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
+use App\Enums\TransactionPayment;
 use App\Enums\TransactionStatus;
 use App\Filament\Resources\TransactionResource\Pages;
-use App\Filament\Resources\TransactionResource\RelationManagers;
 use App\Models\Transaction;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -14,8 +14,7 @@ use Filament\Tables\Table;
 use Filament\Infolists\Infolist;
 use Filament\Infolists\Components\TextEntry;
 use Filament\Infolists\Components\Section;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Infolists\Components\ImageEntry;
 
 class TransactionResource extends Resource
 {
@@ -24,15 +23,6 @@ class TransactionResource extends Resource
     protected static ?string $navigationIcon = 'heroicon-o-credit-card';
 
     protected static ?string $navigationGroup = 'Sales';
-
-    public static function shouldRegisterNavigation(): bool
-    {
-        if(auth()->user()->can('view transactions')){
-            return true;
-        } else {
-            return false;
-        }
-    }
 
     public static function form(Form $form): Form
     {
@@ -64,11 +54,16 @@ class TransactionResource extends Resource
                             $order = \App\Models\Order::find($state);
                             if ($order) {
                                 $set('total_payment', $order->total_price);
+                                $set('service_package_name', $order->servicePackage->name);
                             }
                         } else {
                             $set('total_payment', null);
+                            $set('service_package_name', null);
                         }
                     }),
+                Forms\Components\TextInput::make('service_package_name')
+                    ->label('Service Package')
+                    ->disabled(),
                 Forms\Components\TextInput::make('total_payment')
                     ->required()
                     ->numeric()
@@ -76,12 +71,7 @@ class TransactionResource extends Resource
                     ->readonly(),
                 Forms\Components\Select::make('payment_method')
                     ->required()
-                    ->options([
-                        'cash' => 'Cash',
-                        'credit_card' => 'Credit Card',
-                        'debit_card' => 'Debit Card',
-                        'bank_transfer' => 'Bank Transfer',
-                    ])
+                    ->options(TransactionPayment::class)
                     ->native(false)
                     ->placeholder('Select payment method'),
                 Forms\Components\Select::make('status')
@@ -99,35 +89,49 @@ class TransactionResource extends Resource
                         }
                     }),
                 Forms\Components\DatePicker::make('paid_at')
-                ->reactive()
-                // change state when date is selected
-                ->afterStateUpdated(function ($state, callable $set) {
-                    if ($state) {
-                        $set('status', 'paid');
-                    }
-                }),
+                    ->reactive()
+                    ->afterStateUpdated(function ($state, callable $set) {
+                        if ($state) {
+                            $set('status', 'paid');
+                        }
+                    }),
             ]);
     }
 
     public static function table(Table $table): Table
     {
+        $user = auth()->user();
+
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('order.id')
+                    ->hidden(fn () => $user->hasRole('user'))
                     ->label("Order ID")
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('user.name')
                     ->numeric()
                     ->sortable(),
+                Tables\Columns\TextColumn::make('order.servicePackage.name')
+                    ->label("Service Package")
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('total_payment')
                     ->money('idr', true)
                     ->sortable(),
-                Tables\Columns\TextColumn::make('payment_method')
+                Tables\Columns\SelectColumn::make('payment_method')
+                    ->options(TransactionPayment::class)
+                    ->selectablePlaceholder(false)
+                    ->sortable()
                     ->searchable(),
                 Tables\Columns\TextColumn::make('status')
+                    ->alignCenter()
                     ->badge()
+                    ->sortable()
                     ->searchable(),
+                Tables\Columns\ImageColumn::make('qr_code')
+                    ->alignCenter()
+                    ->label('Bank Transfer')
+                    ->defaultImageUrl(asset('images/qr.png')),
                 Tables\Columns\TextColumn::make('paid_at')
                     ->date()
                     ->sortable(),
@@ -177,9 +181,13 @@ class TransactionResource extends Resource
             ->schema([
                 TextEntry::make('order.id'),
                 TextEntry::make('user.name'),
+                TextEntry::make('order.servicePackage.name')->label('Service Package'),
                 TextEntry::make('total_payment')->prefix('Rp.'),
                 TextEntry::make('payment_method'),
                 TextEntry::make('status'),
+                ImageEntry::make('qr_code')
+                    ->defaultImageUrl(asset('images/qr.png'))
+                    ->label('Bank Transfer'),
                 TextEntry::make('paid_at')->date(),
             ])
         ]);
@@ -190,7 +198,6 @@ class TransactionResource extends Resource
         return [
             'index' => Pages\ListTransactions::route('/'),
             'create' => Pages\CreateTransaction::route('/create'),
-            // 'view' => Pages\ViewTransaction::route('/{record}'),
             'edit' => Pages\EditTransaction::route('/{record}/edit'),
         ];
     }
