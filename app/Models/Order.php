@@ -13,11 +13,13 @@ class Order extends Model
     protected $fillable = [
         'user_id',
         'service_package_id',
+        'weight',
         'staff_id',
         'status',
         'processed_at',
         'completed_at',
         'total_price',
+        'note',
     ];
 
     protected $casts = [
@@ -45,4 +47,24 @@ class Order extends Model
     {
         return $this->hasMany(Transaction::class);
     }
+
+    public function scopeAccessibleByUser($query)
+    {
+        $user = auth()->user();
+        if ($user->hasRole('admin') || $user->hasRole('staff')) {
+            return $query;
+        } else {
+            return $query->where('user_id', $user->id);
+        }
+    }
+
+    public function orders()
+    {
+        if ($this->hasRole('admin') || $this->hasRole('staff')) {
+            return Order::query();
+        } else {
+            return $this->hasMany(Order::class); 
+        }
+    }
+
 }
