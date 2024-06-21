@@ -75,7 +75,8 @@ class ServicePackageResource extends Resource
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('description')
-                    ->searchable(),
+                    ->searchable()
+                    ->limit(45),
                 Tables\Columns\TextColumn::make('price')
                     ->money('idr', true)
                     ->sortable(),
