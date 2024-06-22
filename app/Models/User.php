@@ -24,16 +24,22 @@ class User extends Authenticatable
     {
         parent::boot();
 
-        static::created(function ($user) {
-            if (!$user->hasRole('user')) {
-                $user->assignRole('user');
+        static::creating(function ($user) {
+            if (!$user->role) {
+                if ($user->hasRole('admin')) {
+                    $user->role = 'admin';
+                }
+                elseif (!$user->hasAnyRole(['admin', 'staff'])) {
+                    $user->role = 'user';
+                    $user->assignRole('user');
+                } 
+                elseif ($user->hasRole('staff')) {
+                    $user->role = 'staff';
+                    $user->assignRole('staff');
+                }
             }
         });
     }
-
-    protected $attributes = [
-        'role' => 'user',
-    ];
 
     public function setPasswordAttribute($value)
     {
@@ -42,11 +48,6 @@ class User extends Authenticatable
         } else {
             $this->attributes['password'] = $value;
         }
-    }
-
-    public function setRoleAttribute($value)
-    {
-        $this->attributes['role'] = $value ?? 'user';
     }
 
     public function orders()

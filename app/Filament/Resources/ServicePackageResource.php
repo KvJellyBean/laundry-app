@@ -16,6 +16,7 @@ use Filament\Infolists\Components\TextEntry;
 use Filament\Infolists\Components\Section;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Facades\Auth;
 
 class ServicePackageResource extends Resource
 {
@@ -75,7 +76,8 @@ class ServicePackageResource extends Resource
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('description')
-                    ->searchable(),
+                    ->searchable()
+                    ->limit(45),
                 Tables\Columns\TextColumn::make('price')
                     ->money('idr', true)
                     ->sortable(),
@@ -100,9 +102,8 @@ class ServicePackageResource extends Resource
                 Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
+                Tables\Actions\DeleteBulkAction::make()
+                    ->visible(fn () => Auth::user()->can('edit orders')),
             ]);
     }
 

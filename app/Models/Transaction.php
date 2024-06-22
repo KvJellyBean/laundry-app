@@ -33,14 +33,22 @@ class Transaction extends Model
         return $this->belongsTo(Order::class);
     }
     
+    public function servicePackage()
+    {
+        return $this->hasOneThrough(ServicePackage::class, Order::class, 'id', 'id', 'order_id', 'service_package_id');
+    }
+
     protected static function booted()
     {
         static::updated(function ($transaction) {
-            if ($transaction->paid_at) {
-                $order = $transaction->order;
+            $order = $transaction->order;
+            if ($transaction->status == TransactionStatus::Paid) {
                 $order->status = 'processed';
-                $order->save();
+            } elseif (in_array($transaction->status, [TransactionStatus::Failed, TransactionStatus::Pending])) {
+                $order->status = 'pending';
+                $order->processed_at = null;
             }
+            $order->save();
         });
     }
 }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DownloadInvoiceController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LandingController;
 
@@ -47,6 +48,7 @@ Route::get('/cuci-komplit', function () {
     return redirect('/admin');
 })->name('cuci-komplit');
 
+Route::get('/{record}/invoice', [DownloadInvoiceController::class, 'download'])->name('order.invoice');
 
 
 

@@ -15,11 +15,13 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('service_package_id')->constrained()->onDelete('cascade');
+            $table->decimal('weight', 10, 2);
             $table->foreignId('staff_id')->nullable()->constrained('users')->onDelete('set null');
             $table->string('status')->default('pending');
             $table->timestamp('processed_at')->nullable();
             $table->timestamp('completed_at')->nullable();
             $table->decimal('total_price', 10, 2);
+            $table->text('note')->nullable();
             $table->timestamps();
         });
     }
