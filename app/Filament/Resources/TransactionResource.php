@@ -61,9 +61,12 @@ class TransactionResource extends Resource
                             $set('service_package_name', null);
                         }
                     }),
-                Forms\Components\TextInput::make('service_package_name')
-                    ->label('Service Package')
-                    ->disabled(),
+                Forms\Components\Select::make('service_package_id')
+                    ->native(false)
+                    ->searchable()
+                    ->relationship(name: 'servicePackage', titleAttribute: 'name')
+                    ->disabled()
+                    ->placeholder('Enter service package id'),
                 Forms\Components\TextInput::make('total_payment')
                     ->required()
                     ->numeric()
