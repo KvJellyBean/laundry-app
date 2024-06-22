@@ -5,16 +5,19 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\OrderResource\Pages;
 use App\Models\Order;
 use App\Models\ServicePackage;
+use App\Models\User;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Actions\Action;
 use Filament\Tables\Actions\BulkAction;
 use Filament\Tables\Table;
 use Filament\Infolists\Infolist;
 use Filament\Infolists\Components\TextEntry;
 use Filament\Infolists\Components\Section;
 use App\Enums\OrderStatus;
+use Illuminate\Support\Facades\Auth;
 
 class OrderResource extends Resource
 {
@@ -129,7 +132,7 @@ class OrderResource extends Resource
                 Forms\Components\DatePicker::make('processed_at')
                     ->reactive()
                     ->hidden(fn () => $user->hasRole('user'))
-                    ->readonly()
+                    ->readonly(fn () => $user->hasRole('user'))
                     ->afterStateUpdated(function ($state, callable $set) {
                         if ($state) {
                             $set('status', 'processed');
@@ -138,7 +141,7 @@ class OrderResource extends Resource
                 Forms\Components\DatePicker::make('completed_at')
                     ->reactive()
                     ->hidden(fn () => $user->hasRole('user'))
-                    ->readonly()
+                    ->readonly(fn () => $user->hasRole('user'))
                     ->afterStateUpdated(function ($state, callable $set) {
                         if ($state) {
                             $set('status', 'completed');
@@ -155,6 +158,7 @@ class OrderResource extends Resource
             })
             ->columns([
                 Tables\Columns\TextColumn::make('user.name')
+                    ->searchable()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('servicePackage.name')
                     ->numeric()
@@ -203,21 +207,16 @@ class OrderResource extends Resource
             ])
             ->actions([
                 Tables\Actions\ViewAction::make(),
+                Action::make('Invoice')
+                    ->icon('heroicon-o-arrow-down-tray')
+                    ->url(fn (Order $record) => route('order.invoice', $record->id))
+                    ->openUrlInNewTab(),
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    BulkAction::make('Set Processed')
-                        ->icon('heroicon-o-arrow-path')
-                        ->requiresConfirmation()
-                        ->action(fn (array $records) => Order::whereIn('id', $records)->update(['status' => 'processed'])),
-                    BulkAction::make('Set Completed')
-                        ->icon('heroicon-o-check-circle')
-                        ->requiresConfirmation()
-                        ->action(fn (array $records) => Order::whereIn('id', $records)->update(['status' => 'completed'])),
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
+                Tables\Actions\DeleteBulkAction::make()
+                    ->visible(fn () => Auth::user()->can('edit orders')),
             ]);
     }
 
