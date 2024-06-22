@@ -15,6 +15,7 @@ use Filament\Infolists\Infolist;
 use Filament\Infolists\Components\TextEntry;
 use Filament\Infolists\Components\Section;
 use Filament\Infolists\Components\ImageEntry;
+use Illuminate\Support\Facades\Auth;
 
 class TransactionResource extends Resource
 {
@@ -111,11 +112,14 @@ class TransactionResource extends Resource
                     ->hidden(fn () => $user->hasRole('user'))
                     ->label("Order ID")
                     ->numeric()
+                    ->searchable()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('user.name')
+                    ->searchable()
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('order.servicePackage.name')
+                    ->disabled()
                     ->label("Service Package")
                     ->sortable(),
                 Tables\Columns\TextColumn::make('total_payment')
@@ -162,9 +166,8 @@ class TransactionResource extends Resource
                 Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
+                Tables\Actions\DeleteBulkAction::make()
+                    ->visible(fn () => Auth::user()->can('edit orders')),
             ]);
     }
 
