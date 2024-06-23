@@ -111,12 +111,12 @@ header {
 .heroSection {
     padding-top: 5rem;
     background-image: linear-gradient(
-            to right,
+            to bottom,
             rgba(0, 0, 0, 0.5),
-            rgba(0, 0, 0, 0.8)
+            rgba(0, 0, 0, 0.85)
         ),
-        url("/assets/images/h1_hero.png");
-    background-position: center bottom;
+        url("/assets/images/sarifna.jpeg");
+    background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -676,6 +676,7 @@ nav {
 .nav-item.nav-link.signin {
     transition: all 0.3s;
     position: relative;
+    top: -4px;
     overflow: hidden;
     text-align: center;
     z-index: 1;
@@ -690,6 +691,21 @@ nav {
     text-transform: uppercase;
     margin-top: 10px;
     cursor: pointer;
+}
+
+.nav-item.nav-link.signin a {
+    text-align: center;
+    color: #fff;
+    text-decoration: none;
+}
+
+.nav-item.nav-link.signin:hover a {
+    color: #ff581f;
+    font-weight: bold;
+}
+
+.nav-item.nav-link.signin a:hover {
+    color: #ff581f;
 }
 
 .nav-item.nav-link.signin::after {
@@ -718,7 +734,6 @@ nav {
 }
 
 .nav-item.nav-link.signin:hover {
-    font-weight: bold;
     color: #ff581f;
 }
 
