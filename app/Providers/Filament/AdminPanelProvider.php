@@ -40,7 +40,7 @@ class AdminPanelProvider extends PanelProvider
             ->default()
             ->sidebarCollapsibleOnDesktop()
             ->id('admin')
-            ->path('admin')
+            ->path('dashboard')
             ->login()
             ->registration(Register::class)
             ->colors([
