@@ -2,7 +2,7 @@
 @extends('layouts.app')
 
 @section('content')
-<header>
+<section class="heroSection">
     <div class="section__container header__container" id="home">
         <h1>Drop off your clothes and pick them up clean and fresh.</h1>
         <button class="btn btn__secondary">
@@ -10,14 +10,14 @@
             <span><i class="ri-arrow-right-double-line"></i></span>
         </button>
     </div>
-</header>
+</section>
 
 <section class="about" >
   <div class="section__container about__container">
     <div class="about__grid">
       <div class="about__content">
         <p id="about" class="section__subheader">About Us</p>
-        <h2 class="section__header">Sarfina Laundry</h2>
+        <h2 class="section__header">Sarifna Laundry</h2>
         <p class="para">
           At Sarifna Laundry, we pride ourselves on delivering top-notch laundry services with a commitment to quality and customer satisfaction. With years of experience in the industry, our dedicated team uses state-of-the-art equipment and eco-friendly detergents to ensure your clothes are impeccably clean and well-cared for. We offer a wide range of services, including washing, drying, folding, and specialized stain removal, catering to both everyday laundry needs and delicate garment care.
         </p>
@@ -91,7 +91,7 @@
         <p class="section__subheader">Our Contact</p>
         <h2 class="section__header">Contact</h2>
         <p class="para">
-          Sarfina Laundry is a leading laundry service provider committed to delivering impeccable cleanliness and convenience to its clientele. Whether it's everyday laundry needs or delicate garment care, our team, boasting years of industry experience, stands ready to provide top-notch service. Conveniently open seven days a week, we offer free pickup and delivery options to make the laundry experience hassle-free. 
+          Sarifna Laundry is a leading laundry service provider committed to delivering impeccable cleanliness and convenience to its clientele. Whether it's everyday laundry needs or delicate garment care, our team, boasting years of industry experience, stands ready to provide top-notch service. Conveniently open seven days a week, we offer free pickup and delivery options to make the laundry experience hassle-free. 
         </p>
       </div>
 
@@ -115,8 +115,8 @@
 
 
   </div>
-  <div style="background-color: var(black);">
-    <h2 style="text-align: center;">Find Us on the Map</h2>
+  <div class="findUsContainer">
+    <h2 class="findUs">Find Us on The Map</h2>
     <div id="map" style="height: 400px;"></div></div>
 </section>  
 
@@ -249,7 +249,7 @@
 <footer class="footer">
   <div class="section__container footer__container">
     <div class="footer__col">
-      <h5><a href="#">Sarfina Laundry.</a></h5>
+      <h5><a href="#">Sarifna Laundry.</a></h5>
       <p>Discover the pinnacle of laundry care at Sarifna Laundry, where quality and convenience converge seamlessly.</p>
     </div>
     <div class="footer__col">

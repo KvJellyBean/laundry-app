@@ -3,12 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <title>Sarifna Laundry</title>
-    <link rel="icon" href="{{ asset('images/laundryLogo.jpg') }}"> -->
+        <title>Sarifna Laundry</title>
+        <link rel="icon" href="{{ asset('images/laundryLogo.jpg') }}">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <script src="{{ asset('assets/js/apps.js') }}" defer type="text/javascript"></script>
-
-    
 
     @stack('styles')
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -25,7 +23,7 @@
     <header class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
         <div class="container">
             <nav>
-                <div class="nav__logo"><a href="#">SARFINA LAUNDRY.</a></div>
+                <div class="nav__logo"><a href="/">SARIFNA LAUNDRY.</a></div>
                     <ul class="nav__links" id="nav-links">
                     <li class="link"><a href="#">Home</a></li>
                     <li class="link"><a href="#about">About</a></li>
@@ -45,11 +43,6 @@
     <div class="container">
         @yield('content')
     </div>
-    <!-- <footer class="footer mt-auto py-3 bg-light">
-        <div class="container text-center">
-            <span class="text-muted">© Copyright Sarifna Laundry 2024</span>
-        </div>
-    </footer> -->
     <script>
 
     </script>
