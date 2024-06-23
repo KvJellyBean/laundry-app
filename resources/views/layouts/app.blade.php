@@ -30,8 +30,17 @@
                     <li class="link"><a href="#services">Services</a></li>
                     <li class="link"><a href="#contact">Contact</a></li>
                     <li class="link"><a href="#info">Info</a></li>
-                    <li class="link"><a href="#founder">Founder</a></li>
-                    <a class="nav-item nav-link signin {{ request()->is('signin') ? 'active' : '' }}" href="/signin">Sign In</a>
+                    @if(Auth::check())
+                        <li class="link"><a href="/dashboard">Dashboard</a></li>
+                        <li class="nav-item nav-link signin {{ request()->is('signin') ? 'active' : '' }}"><a href="{{ route('logout') }}" 
+                                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                    @else
+                        <li class="link"><a href="#founder">Founder</a></li>
+                        <li class="nav-item nav-link signin {{ request()->is('signin') ? 'active' : '' }}"><a href="/signin">Sign In</a></li>
+                    @endif
                     </ul>
                 <div class="nav__menu__btn" id="menu-btn">
                 <span><i class="ri-menu-line"></i></span>
