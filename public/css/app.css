@@ -711,26 +711,20 @@ nav {
     left: 0;
     width: 0%;
     height: 100%;
-    background-color: #454444;
+    background-color: #fff;
     transition: all 0.3s;
     border-radius: 10rem;
     z-index: -1;
 }
 
 .nav-item.nav-link.signin:hover {
-    color: #fff;
+    font-weight: bold;
+    color: #ff581f;
 }
 
 .nav-item.nav-link.signin:hover::before {
     width: 100%;
 }
-
-/* .footer {
-    background: #f5f5f5;
-    padding: 20px 0;
-    text-align: center;
-    margin-top: auto;
-} */
 
 nav a {
     color: #333;
@@ -943,4 +937,19 @@ nav a {
 
 .info .container.active .toggle-right {
     transform: translateX(200%);
+}
+
+/* Scroll bar style */
+::-webkit-scrollbar {
+    width: 12px; /* Lebar scroll bar */
+    background-color: #111111; /* Warna latar belakang scroll bar */
+}
+
+::-webkit-scrollbar-thumb {
+    background: #ff581f; /* Warna thumb scroll bar (bagian yang dapat digerakkan) */
+    border-radius: 10px; /* Border radius untuk thumb */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #e64900; /* Warna thumb saat dihover */
 }
