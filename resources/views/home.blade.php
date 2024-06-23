@@ -130,7 +130,7 @@
         <div class="form" >
           <h1>Hi There!</h1>
           <p>Expand your Sarifna Laundry experience by registering for an account today! Enjoy exclusive benefits and access to our full range of services by signing up now.</p>
-          <a id="founder" class="nav-item nav-link signin {{ request()->is('signin') ? 'active' : '' }}" href="/">Sign Up</a>
+          <a id="founder" class="nav-item nav-link signin {{ request()->is('signin') ? 'active' : '' }}" href="/signup">Sign Up</a>
           
         </div>
       </div>
