@@ -683,18 +683,18 @@ nav {
 
     color: #fff;
     font-size: 12px;
-    padding: 10px 45px;
     border: 1px solid transparent;
     border-radius: 8px;
     font-weight: 600;
-    letter-spacing: 0.5px;
     text-transform: uppercase;
+    padding: 10px 0px;
     margin-top: 10px;
     cursor: pointer;
 }
 
 .nav-item.nav-link.signin a {
     text-align: center;
+    padding: 10px 25px;
     color: #fff;
     text-decoration: none;
 }
