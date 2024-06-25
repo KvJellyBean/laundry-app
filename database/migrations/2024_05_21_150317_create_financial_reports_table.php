@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('financial_reports', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->date('report_date');
             $table->decimal('total_income', 10, 2);
             $table->decimal('total_expense', 10, 2);
             $table->decimal('total_profit', 10, 2);
