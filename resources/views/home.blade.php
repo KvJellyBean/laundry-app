@@ -8,7 +8,7 @@
     @include('components.contact')
     @include('components.info')
     @include('components.founder')
-    @include('components.footer')
+    @include('components.footer', ['servicePackages' => $servicePackages])
 
     <script>
       var map = L.map('map').setView([-6.167744, 106.793290], 13); // Replace with your coordinates

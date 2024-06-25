@@ -1,4 +1,3 @@
-<!-- footer.blade.php -->
 <footer class="footer">
   <div class="section__container footer__container">
     <div class="footer__col">
@@ -7,29 +6,29 @@
     </div>
     <div class="footer__col">
       <h4>Quick Links</h4>
-      <div class="footer__links"      >
+      <div class="footer__links">
         <a href="#">Home</a>
         <a href="#about">About</a>
         <a href="#services">Services</a>
         <a href="#contact">Contact</a>
         <a href="#info">Info</a>
-        <a href="#founder">Founder</a>      
-      </div>      
+        <a href="#founder">Founder</a>
+      </div>
     </div>
     <div class="footer__col">
       <h4>Our Services</h4>
-        <div class="footer__links">
-          <a href="#services">Cuci</a>
-          <a href="#services">Setrika</a>
-          <a href="#services">Cuci Komplit</a>
-        </div>
+      <div class="footer__links">
+        @foreach($servicePackages as $service)
+          <a href="#services">{{ $service->name }}</a>
+        @endforeach
+      </div>
     </div>
     <div class="footer__col">
       <h4>Help</h4>
       <div class="footer__links">
-        <a >Privacy Policy</a>
-        <a >Support</a>
-        <a >Terms & Condition</a>
+        <a>Privacy Policy</a>
+        <a>Support</a>
+        <a>Terms & Condition</a>
       </div>
     </div>
   </div>
