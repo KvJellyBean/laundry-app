@@ -5,7 +5,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Spatie\Permission\Traits\HasRoles;
-use Spatie\Permission\Models\Role;
 
 class User extends Authenticatable 
 {
@@ -28,17 +27,32 @@ class User extends Authenticatable
             if (!$user->role) {
                 if ($user->hasRole('admin')) {
                     $user->role = 'admin';
-                }
-                elseif (!$user->hasAnyRole(['admin', 'staff'])) {
+                } elseif (!$user->hasAnyRole(['admin', 'staff'])) {
                     $user->role = 'user';
                     $user->assignRole('user');
-                } 
-                elseif ($user->hasRole('staff')) {
+                } elseif ($user->hasRole('staff')) {
                     $user->role = 'staff';
                     $user->assignRole('staff');
                 }
             }
         });
+
+        static::updating(function ($user) {
+            if ($user->role && !$user->hasRole($user->role)) {
+                $user->syncRoles([$user->role]);
+            }
+        });
+    }
+
+    public function setRoleAttribute($value)
+    {
+        $this->attributes['role'] = $value;
+        $this->syncRoles([$value]);
+    }
+
+    public function getRoleAttribute()
+    {
+        return $this->roles->first()->name ?? null;
     }
 
     public function setPasswordAttribute($value)

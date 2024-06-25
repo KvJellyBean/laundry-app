@@ -12,9 +12,7 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Filament\Infolists\Components\TextEntry;
 use Filament\Infolists\Components\Section;
-use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Models\Role;
-
 
 class UserResource extends Resource
 {
@@ -28,11 +26,7 @@ class UserResource extends Resource
 
     public static function shouldRegisterNavigation(): bool
     {
-        if(auth()->user()->can('view user')){
-            return true;
-        } else {
-            return false;
-        }
+        return auth()->user()->can('view user');
     }
 
     public static function form(Form $form): Form
@@ -57,11 +51,9 @@ class UserResource extends Resource
                             ->required()
                             ->maxLength(255)
                             ->placeholder('Enter user password'),
-                        Forms\Components\Select::make('roles')
-                            ->relationship('roles', 'name')
+                        Forms\Components\Select::make('role')
+                            ->options(Role::pluck('name', 'name')->toArray())
                             ->preload()
-                            ->selectablePlaceholder(false)
-                            ->default(Role::where('name', 'user')->first()->id)
                             ->required(),
                     ]),
                 Forms\Components\Section::make('User profile')
@@ -92,7 +84,7 @@ class UserResource extends Resource
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('roles.name')
+                Tables\Columns\TextColumn::make('role')
                     ->sortable()
                     ->searchable(),
                 Tables\Columns\TextColumn::make('address')
@@ -107,10 +99,10 @@ class UserResource extends Resource
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
-            ])->defaultSort('roles.name', 'asc')
+            ])->defaultSort('role', 'asc')
             ->filters([
                 Tables\Filters\SelectFilter::make('role')
-                    ->options(Role::pluck('name', 'id')->toArray())
+                    ->options(Role::pluck('name', 'name')->toArray())
                     ->label('Role')
                     ->placeholder('Filter by role')
                     ->searchable(true),
@@ -122,7 +114,7 @@ class UserResource extends Resource
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make()
-                    ->visible(fn () => Auth::user()->can('edit orders')),
+                    ->visible(fn () => auth()->user()->can('edit orders')),
             ]);
     }
 
