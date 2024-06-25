@@ -56,7 +56,7 @@ class ServicePackageResource extends Resource
                         Forms\Components\TextInput::make('price')
                             ->required()
                             ->numeric()
-                            ->prefix('Rp.')
+                            ->prefix('IDR.')
                             ->placeholder('Enter new package price')
                             ->minValue(0),
                         Forms\Components\Select::make('status')

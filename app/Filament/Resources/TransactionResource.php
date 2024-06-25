@@ -71,7 +71,7 @@ class TransactionResource extends Resource
                 Forms\Components\TextInput::make('total_payment')
                     ->required()
                     ->numeric()
-                    ->prefix('Rp.')
+                    ->prefix('IDR.')
                     ->readonly(),
                 Forms\Components\Select::make('payment_method')
                     ->required()
@@ -188,7 +188,7 @@ class TransactionResource extends Resource
                 TextEntry::make('order.id'),
                 TextEntry::make('user.name'),
                 TextEntry::make('order.servicePackage.name')->label('Service Package'),
-                TextEntry::make('total_payment')->prefix('Rp.'),
+                TextEntry::make('total_payment')->prefix('IDR.'),
                 TextEntry::make('payment_method'),
                 TextEntry::make('status'),
                 ImageEntry::make('qr_code')

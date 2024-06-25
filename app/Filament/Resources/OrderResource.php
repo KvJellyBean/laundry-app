@@ -91,7 +91,7 @@ class OrderResource extends Resource
                         Forms\Components\TextInput::make('total_price')
                             ->required()
                             ->numeric()
-                            ->prefix('Rp.')
+                            ->prefix('IDR.')
                             ->minValue(0)
                             ->readOnly(fn () => $user->hasRole('user')),
                         Forms\Components\Textarea::make('note')
@@ -231,7 +231,7 @@ class OrderResource extends Resource
                 TextEntry::make('servicePackage.name')->label('Service Package'),
                 TextEntry::make('staff.name')->label('Staff'),
                 TextEntry::make('status'),
-                TextEntry::make('total_price')->prefix('Rp.'),
+                TextEntry::make('total_price')->prefix('IDR.'),
                 TextEntry::make('processed_at')->label('Processed At'),
                 TextEntry::make('completed_at')->label('Completed At'),
             ])
