@@ -613,6 +613,14 @@ nav {
     }
 }
 
+.textJustify {
+    text-align: justify;
+}
+
+.btnInfo {
+    padding: 0.5rem 2rem !important;
+}
+
 @media (width < 860px) {
     nav {
         position: fixed;
