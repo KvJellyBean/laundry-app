@@ -52,37 +52,18 @@
   <div class="section__container services__container">
     <p class="section__subheader">Our Services</p>
     <h2 class="section__header">Service Package</h2>
-      <div class="services__grid">
+    <div class="services__grid">
+      @foreach ($servicePackages as $service)
         <div class="services__card">
-          <img src="assets/images/cuci.jpg" alt="services" />
-          <h4>Cuci</h4>
-          <p>
-            Our Cuci service ensures your clothes are not only
-            clean, but also well-ironed and ready to wear.
-          </p>
+          <img src="{{ asset('assets/images/cuci.jpg') }}" alt="services" />
+          <h4>{{ $service->name }}</h4>
+          <p class="textJustify">{{ $service->description }}</p>
+          <p><strong>Price:</strong> IDR. {{ number_format($service->price, 2) }}</p>
         </div>
-        <div class="services__card">
-          <img src="assets/images/setrikaCOPY.jpg" alt="services" />
-          <h4>Setrika</h4>
-          <p>
-            Our Setrika service ensures your clothes are not
-            only clean, but also well-ironed and ready to wear.
-          </p>
-        </div>
-        <div class="services__card">
-          <img src="assets/images/cucikomplit.png" alt="services" />
-          <h4>Cuci Komplit</h4>
-          <p>
-            Our Cuci Komplit service provides a complete
-            cleaning solution for your clothes, ensuring they
-            are thoroughly cleaned, dried, and folded.
-          </p>
-        </div>
+      @endforeach
     </div>
   </div>
 </section>
-
-
 
 <section class="contact" id="contact">
   <div class="section__container contact__container">
@@ -130,7 +111,7 @@
         <div class="form" >
           <h1>Hi There!</h1>
           <p>Expand your Sarifna Laundry experience by registering for an account today! Enjoy exclusive benefits and access to our full range of services by signing up now.</p>
-          <a id="founder" class="nav-item nav-link signin {{ request()->is('signin') ? 'active' : '' }}" href="/signup">Sign Up</a>
+          <a class="btnInfo nav-item nav-link signin {{ request()->is('signin') ? 'active' : '' }}" href="/signup">Sign Up</a>
           
         </div>
       </div>
@@ -138,7 +119,7 @@
         <div class="form">
           <h1>Welcome Back</h1>
           <p>We're delighted to see you again. Please log in to access your account and enjoy our premium laundry services. Thank you for continuing to choose Sarifna Laundry for your laundry needs!</p>
-          <a class="nav-item nav-link signin {{ request()->is('signin') ? 'active' : '' }}" href="/signin">Sign In</a>
+          <a class="btnInfo nav-item nav-link signin {{ request()->is('signin') ? 'active' : '' }}" href="/signin">Sign In</a>
         </div>
       </div>
       <div class="toggle-container">
