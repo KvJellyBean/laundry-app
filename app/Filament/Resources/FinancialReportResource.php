@@ -37,13 +37,13 @@ class FinancialReportResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\Select::make('user_id')
+                Forms\Components\DatePicker::make('report_date')
                     ->required()
-                    ->native(false)
-                    ->searchable()
-                    ->preload()
-                    ->relationship(name: 'user', titleAttribute: 'name')
-                    ->placeholder('Enter user id'),
+                    ->firstDayOfWeek(0)
+                    ->placeholder('Select report date')
+                    ->default(now())
+                    ->reactive()
+                    ->lazy(),
                 Forms\Components\TextInput::make('total_income')
                     ->required()
                     ->numeric()
@@ -85,9 +85,9 @@ class FinancialReportResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('user.name')
-                    ->numeric()
-                    ->sortable(),
+                Tables\Columns\TextColumn::make('report_date')
+                    ->sortable()
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('total_income')
                     ->money('idr', true)
                     ->sortable(),
@@ -128,7 +128,7 @@ class FinancialReportResource extends Resource
             Section::make('Report Information')
             ->columns(2)
             ->schema([
-                TextEntry::make('user.name')->label('Staff'),
+                TextEntry::make('report_date'),
                 TextEntry::make('total_income')->prefix('Rp.'),
                 TextEntry::make('total_expense')->prefix('Rp.'),
                 TextEntry::make('total_profit')->prefix('Rp.'),
@@ -148,7 +148,6 @@ class FinancialReportResource extends Resource
         return [
             'index' => Pages\ListFinancialReports::route('/'),
             'create' => Pages\CreateFinancialReport::route('/create'),
-            // 'view' => Pages\ViewFinancialReport::route('/{record}'),
             'edit' => Pages\EditFinancialReport::route('/{record}/edit'),
         ];
     }

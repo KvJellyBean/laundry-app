@@ -10,7 +10,7 @@ class FinancialReport extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id',
+        'report_date',
         'total_income',
         'total_expense',
         'total_profit',
@@ -23,10 +23,5 @@ class FinancialReport extends Model
         static::saving(function ($financialReport) {
             $financialReport->total_profit = $financialReport->total_income - $financialReport->total_expense;
         });
-    }
-    
-    public function user()
-    {
-        return $this->belongsTo(User::class);
     }
 }
