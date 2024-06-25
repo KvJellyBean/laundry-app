@@ -27,12 +27,16 @@ class User extends Authenticatable
             if (!$user->role) {
                 if ($user->hasRole('admin')) {
                     $user->role = 'admin';
-                } elseif (!$user->hasAnyRole(['admin', 'staff'])) {
-                    $user->role = 'user';
-                    $user->assignRole('user');
                 } elseif ($user->hasRole('staff')) {
                     $user->role = 'staff';
                     $user->assignRole('staff');
+                } elseif ($user->hasRole('user')) {
+                    $user->role = 'user';
+                    $user->assignRole('user');
+                } 
+            } else {
+                if (!$user->hasRole($user->role)) {
+                    $user->assignRole($user->role);
                 }
             }
         });
@@ -42,12 +46,26 @@ class User extends Authenticatable
                 $user->syncRoles([$user->role]);
             }
         });
+
+        static::created(function ($user) {
+            if ($user->role && !$user->hasRole($user->role)) {
+                $user->syncRoles([$user->role]);
+            }
+        });
+
+        static::updated(function ($user) {
+            if ($user->role && !$user->hasRole($user->role)) {
+                $user->syncRoles([$user->role]);
+            }
+        });
     }
 
     public function setRoleAttribute($value)
     {
         $this->attributes['role'] = $value;
-        $this->syncRoles([$value]);
+        if (!$this->hasRole($value)) {
+            $this->syncRoles([$value]);
+        }
     }
 
     public function getRoleAttribute()
