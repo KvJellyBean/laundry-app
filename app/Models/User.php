@@ -24,53 +24,11 @@ class User extends Authenticatable
         parent::boot();
 
         static::creating(function ($user) {
-            if (!$user->role) {
-                if ($user->hasRole('admin')) {
-                    $user->role = 'admin';
-                } elseif ($user->hasRole('staff')) {
-                    $user->role = 'staff';
-                    $user->assignRole('staff');
-                } elseif ($user->hasRole('user')) {
-                    $user->role = 'user';
-                    $user->assignRole('user');
-                } 
-            } else {
-                if (!$user->hasRole($user->role)) {
-                    $user->assignRole($user->role);
-                }
+            if($user->role && !$user->hasRole($user->role)) {
+                $user->assignRole($user->role);
             }
         });
 
-        static::updating(function ($user) {
-            if ($user->role && !$user->hasRole($user->role)) {
-                $user->syncRoles([$user->role]);
-            }
-        });
-
-        static::created(function ($user) {
-            if ($user->role && !$user->hasRole($user->role)) {
-                $user->syncRoles([$user->role]);
-            }
-        });
-
-        static::updated(function ($user) {
-            if ($user->role && !$user->hasRole($user->role)) {
-                $user->syncRoles([$user->role]);
-            }
-        });
-    }
-
-    public function setRoleAttribute($value)
-    {
-        $this->attributes['role'] = $value;
-        if (!$this->hasRole($value)) {
-            $this->syncRoles([$value]);
-        }
-    }
-
-    public function getRoleAttribute()
-    {
-        return $this->roles->first()->name ?? null;
     }
 
     public function setPasswordAttribute($value)
