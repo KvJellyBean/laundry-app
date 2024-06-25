@@ -70,6 +70,8 @@ class AdminPanelProvider extends PanelProvider
             ->plugin(FilamentSpatieRolesPermissionsPlugin::make())
             ->navigation(function (NavigationBuilder $builder): NavigationBuilder {
                 $user = auth()->user();
+                $servicesGroup = $user && $user->hasRole('user') ? 'Services' : 'Data Management';
+                $ordersTransactionsGroup = $user && $user->hasRole('user') ? 'Orders & Transactions' : 'Sales';
 
                 return $builder
                     ->groups([
@@ -81,14 +83,14 @@ class AdminPanelProvider extends PanelProvider
                                     ->isActiveWhen(fn (): bool => request()->routeIs('filament.admin.pages.dashboard'))
                                     ->url(fn (): string => Dashboard::getUrl()),
                             ]),
-                        NavigationGroup::make('Data Management')
+                        NavigationGroup::make($servicesGroup)
                             ->items(array_merge(
                                 ($user && $user->can('roles-permissions')) ? PermissionResource::getNavigationItems() : [],
                                 ($user && $user->can('roles-permissions')) ? RoleResource::getNavigationItems() : [],
                                 UserResource::getNavigationItems(),
                                 ServicePackageResource::getNavigationItems()
                             )),
-                        NavigationGroup::make('Sales')
+                        NavigationGroup::make($ordersTransactionsGroup)
                             ->items([
                                 ...OrderResource::getNavigationItems(),
                                 ...TransactionResource::getNavigationItems(),
