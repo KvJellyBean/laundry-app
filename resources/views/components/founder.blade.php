@@ -1,0 +1,81 @@
+<!-- founder.blade.php -->
+<section class="customer">
+    <div class="section__container customer__container">
+        <p class="section__subheader">Founder</p>
+        <h2 class="section__header">Meet Our Founder</h2>
+        <div class="customer__review">
+            <!-- Slider main container -->
+            <div class="swiper">
+                <!-- Additional required wrapper -->
+                <div class="swiper-wrapper">
+                    <!-- Slides -->
+                    <div class="swiper-slide">
+                        <div class="customer__review__card">
+                            <span><i class="ri-double-quotes-r"></i></span>
+                            <div class="customer__review__details">
+                                <div class="customer__review__image">
+                                    <img src="assets/images/kevin.png" alt="customer" />
+                                </div>
+                                <div>
+                                    <h4>Kevin Natanael</h4>
+                                    <h5>535220084</h5>
+                                </div>
+                            </div>
+                            <div class="footer__socials">
+                                <a href="#"><i class="ri-facebook-fill"></i></a>
+                                <a href="#"><i class="ri-twitter-fill"></i></a>
+                                <a href="#"><i class="ri-instagram-line"></i></a>
+                                <a href="#"><i class="ri-linkedin-fill"></i></a>
+                            </div>
+                            <p>Welcome to Sarifna Laundry, where we're redefining clean living with passion and innovation.</p>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="customer__review__card">
+                            <span><i class="ri-double-quotes-r"></i></span>
+                            <div class="customer__review__details">
+                                <div class="customer__review__image">
+                                    <img src="assets/images/ari.png" alt="customer" />
+                                </div>
+                                <div>
+                                    <h4>Ari Wijaya</h4>
+                                    <h5>535220060</h5>
+                                </div>
+                            </div>
+                            <div class="footer__socials">
+                                <a href="#"><i class="ri-facebook-fill"></i></a>
+                                <a href="#"><i class="ri-twitter-fill"></i></a>
+                                <a href="#"><i class="ri-instagram-line"></i></a>
+                                <a href="#"><i class="ri-linkedin-fill"></i></a>
+                            </div>
+                            <p>Experience the difference at Sarifna Laundry, where quality meets convenience for all your laundry needs.</p>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="customer__review__card">
+                            <span><i class="ri-double-quotes-r"></i></span>
+                            <div class="customer__review__details">
+                                <div class="customer__review__image">
+                                    <img src="assets/images/Richard.png" alt="customer" />
+                                </div>
+                                <div>
+                                    <h4>Richard Vincentius</h4>
+                                    <h5>535220077</h5>
+                                </div>
+                            </div>
+                            <div class="footer__socials">
+                                <a href="#"><i class="ri-facebook-fill"></i></a>
+                                <a href="#"><i class="ri-twitter-fill"></i></a>
+                                <a href="#"><i class="ri-instagram-line"></i></a>
+                                <a href="#"><i class="ri-linkedin-fill"></i></a>
+                            </div>
+                            <p>"Join us in our mission to elevate everyday chores into exceptional experiences, one wash at a time.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- If we need pagination -->
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+    </div>
+</section>
