@@ -2,19 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ServicePackage;
 use Illuminate\Http\Request;
 
 class LandingController extends Controller
 {
-    public function home() {
-        return view('home', [
-            'about' => $this->aboutData(),
-            'services' => $this->servicesData(),
-            'contact' => $this->contactData(),
-            'signup' => $this->signupData(),
-            'signin' => $this->signinData(),
-        ]);
-    }
+    public function home()
+{
+    $servicePackages = ServicePackage::where('status', 'active')->get();
+    return view('home', [
+        'about' => $this->aboutData(),
+        'services' => $this->servicesData(),
+        'contact' => $this->contactData(),
+        'signup' => $this->signupData(),
+        'signin' => $this->signinData(),
+        'servicePackages' => $servicePackages,
+    ]);
+}
 
     public function about() {
         return view('about', [
