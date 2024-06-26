@@ -21,15 +21,22 @@ class AdminSeeder extends Seeder
         if (!$adminRole) {
             $adminRole = Role::create(['name' => 'admin']);
         }
-        
-        // Buat user admin
-        User::create([
-            'name' => 'Admin',
-            'email' => 'admin@example.com',
-            'password' => Hash::make('12345678'),
-            'role' => 'admin',
-            'address' => '123 Admin Street',
-            'phone_number' => '1234567890',
-        ])->assignRole('admin');
+
+        // Cari atau buat user admin
+        $adminUser = User::firstOrCreate(
+            ['email' => 'admin@example.com'],
+            [
+                'name' => 'Admin',
+                'password' => Hash::make('12345678'),
+                'address' => '123 Admin Street',
+                'phone_number' => '1234567890',
+                'role' => 'admin'
+            ]
+        );
+
+        // Pastikan user tersebut memiliki role "admin"
+        if (!$adminUser->hasRole('admin')) {
+            $adminUser->assignRole('admin');
+        }
     }
 }
