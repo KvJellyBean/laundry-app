@@ -7,18 +7,17 @@ use Illuminate\Http\Request;
 
 class LandingController extends Controller
 {
-    public function home()
-{
-    $servicePackages = ServicePackage::where('status', 'active')->get();
-    return view('home', [
-        'about' => $this->aboutData(),
-        'services' => $this->servicesData(),
-        'contact' => $this->contactData(),
-        'signup' => $this->signupData(),
-        'signin' => $this->signinData(),
-        'servicePackages' => $servicePackages,
-    ]);
-}
+    public function home() {
+        $servicePackages = ServicePackage::where('status', 'active')->get();
+        return view('home', [
+            'about' => $this->aboutData(),
+            'services' => $this->servicesData(),
+            'contact' => $this->contactData(),
+            'signup' => $this->signupData(),
+            'signin' => $this->signinData(),
+            'servicePackages' => $servicePackages,
+        ]);
+    }
 
     public function about() {
         return view('about', [
@@ -27,8 +26,9 @@ class LandingController extends Controller
     }
 
     public function services() {
+        $servicePackages = ServicePackage::where('status', 'active')->get();
         return view('services', [
-            'data' => $this->servicesData()
+            'servicePackages' => $servicePackages,
         ]);
     }
 
