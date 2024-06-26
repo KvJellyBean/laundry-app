@@ -22,10 +22,8 @@
                                 </div>
                             </div>
                             <div class="footer__socials">
-                                <a href="#"><i class="ri-facebook-fill"></i></a>
-                                <a href="#"><i class="ri-twitter-fill"></i></a>
-                                <a href="#"><i class="ri-instagram-line"></i></a>
-                                <a href="#"><i class="ri-linkedin-fill"></i></a>
+                                <a href="https://www.instagram.com/natanvinx/" target="_blank"><i class="ri-instagram-line"></i></a>
+                                <a href="https://www.linkedin.com/in/kevin-natanael-44929b26b/" target="_blank"><i class="ri-linkedin-fill"></i></a>
                             </div>
                             <p>Welcome to Sarifna Laundry, where we're redefining clean living with passion and innovation.</p>
                         </div>
@@ -43,10 +41,8 @@
                                 </div>
                             </div>
                             <div class="footer__socials">
-                                <a href="#"><i class="ri-facebook-fill"></i></a>
-                                <a href="#"><i class="ri-twitter-fill"></i></a>
-                                <a href="#"><i class="ri-instagram-line"></i></a>
-                                <a href="#"><i class="ri-linkedin-fill"></i></a>
+                                <a href="https://www.instagram.com/ariwjy_ri/?utm_source=ig_web_button_share_sheet" target="_blank"><i class="ri-instagram-line"></i></a>
+                                <a href="https://www.linkedin.com/in/ari-wijaya-370ba12ba" target="_blank"><i class="ri-linkedin-fill"></i></a>
                             </div>
                             <p>Experience the difference at Sarifna Laundry, where quality meets convenience for all your laundry needs.</p>
                         </div>
@@ -64,12 +60,10 @@
                                 </div>
                             </div>
                             <div class="footer__socials">
-                                <a href="#"><i class="ri-facebook-fill"></i></a>
-                                <a href="#"><i class="ri-twitter-fill"></i></a>
-                                <a href="#"><i class="ri-instagram-line"></i></a>
-                                <a href="#"><i class="ri-linkedin-fill"></i></a>
+                                <a href="https://www.instagram.com/rchardvin/" target="_blank"><i class="ri-instagram-line"></i></a>
+                                <a href="https://www.linkedin.com/in/richard-vincentius-98572b26b/" target="_blank"><i class="ri-linkedin-fill"></i></a>
                             </div>
-                            <p>"Join us in our mission to elevate everyday chores into exceptional experiences, one wash at a time.</p>
+                            <p>Join us in our mission to elevate everyday chores into exceptional experiences, one wash at a time.</p>
                         </div>
                     </div>
                 </div>
