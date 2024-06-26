@@ -33,3 +33,5 @@
         <div id="map" style="height: 400px;"></div>
     </div>
 </section>
+<link rel="stylesheet" href="{{ asset('css/contact.css') }}">
+

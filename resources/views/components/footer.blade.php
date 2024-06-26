@@ -36,3 +36,5 @@
     Copyright © 2024 Sarifna Laundry. All rights reserved.
   </div>
 </footer>
+<link rel="stylesheet" href="{{ asset('css/footer.css') }}">
+

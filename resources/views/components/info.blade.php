@@ -42,3 +42,5 @@
         </div>
     </div>
 </section>
+<link rel="stylesheet" href="{{ asset('css/info.css') }}">
+

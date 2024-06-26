@@ -1,20 +1,20 @@
 <!-- founder.blade.php -->
-<section class="customer">
-    <div class="section__container customer__container">
+<section class="founder">
+    <div class="section__container founder__container">
         <p class="section__subheader">Founder</p>
         <h2 class="section__header">Meet Our Founder</h2>
-        <div class="customer__review">
+        <div class="founder__review">
             <!-- Slider main container -->
             <div class="swiper">
                 <!-- Additional required wrapper -->
                 <div class="swiper-wrapper">
                     <!-- Slides -->
                     <div class="swiper-slide">
-                        <div class="customer__review__card">
+                        <div class="founder__review__card">
                             <span><i class="ri-double-quotes-r"></i></span>
-                            <div class="customer__review__details">
-                                <div class="customer__review__image">
-                                    <img src="assets/images/kevin.png" alt="customer" />
+                            <div class="founder__review__details">
+                                <div class="founder__review__image">
+                                    <img src="assets/images/kevin.png" alt="founder" />
                                 </div>
                                 <div>
                                     <h4>Kevin Natanael</h4>
@@ -31,11 +31,11 @@
                         </div>
                     </div>
                     <div class="swiper-slide">
-                        <div class="customer__review__card">
+                        <div class="founder__review__card">
                             <span><i class="ri-double-quotes-r"></i></span>
-                            <div class="customer__review__details">
-                                <div class="customer__review__image">
-                                    <img src="assets/images/ari.png" alt="customer" />
+                            <div class="founder__review__details">
+                                <div class="founder__review__image">
+                                    <img src="assets/images/ari.png" alt="founder" />
                                 </div>
                                 <div>
                                     <h4>Ari Wijaya</h4>
@@ -52,11 +52,11 @@
                         </div>
                     </div>
                     <div class="swiper-slide">
-                        <div class="customer__review__card">
+                        <div class="founder__review__card">
                             <span><i class="ri-double-quotes-r"></i></span>
-                            <div class="customer__review__details">
-                                <div class="customer__review__image">
-                                    <img src="assets/images/Richard.png" alt="customer" />
+                            <div class="founder__review__details">
+                                <div class="founder__review__image">
+                                    <img src="assets/images/Richard.png" alt="founder" />
                                 </div>
                                 <div>
                                     <h4>Richard Vincentius</h4>
@@ -79,3 +79,5 @@
         </div>
     </div>
 </section>
+<link rel="stylesheet" href="{{ asset('css/founder.css') }}">
+
