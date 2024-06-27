@@ -65,23 +65,23 @@ Quickly set up a local copy by following these simple steps for a seamless start
 
 -   Clone the repository to your local machine
     ```sh
-      git clone https://github.com/KvJellyBean/laundry-app.git
+    git clone https://github.com/KvJellyBean/laundry-app.git
     ```
 -   Navigate to your local project
     ```sh
-      cd laundry-app
+    cd laundry-app
     ```
 -   Install dependencies
     ```sh
-      composer install
-      npm install
+    composer install
+    npm install
     ```
 -   Change the name of `.env.copy` file into `.env` in your local project
     (Make sure inside your `.env` file has the right configuration for your machine)
 -   Run migration and the seeder
     ```sh
-      php artisan migrate
-      php artisan db:seed
+    php artisan migrate
+    php artisan db:seed
     ```
     Or just simply import laundry.sql into your local database
 
@@ -93,7 +93,7 @@ Quickly set up a local copy by following these simple steps for a seamless start
 
 -   Start the project
     ```sh
-      php artisan serve
+    php artisan serve
     ```
 -   If the project is not yet open, open it using `http://127.0.0.1:8000/` in your web browser
 
