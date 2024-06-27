@@ -87,3 +87,37 @@ serviceReadMoreBtns.forEach((btn) => {
         services.scrollIntoView({ behavior: "smooth" });
     });
 });
+
+// serviceshome.js
+document.addEventListener('DOMContentLoaded', () => {
+    const carousel = document.querySelector('.services__carousel');
+    const grid = document.querySelector('.services__grid');
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+
+    carousel.addEventListener('mousedown', (e) => {
+        isDown = true;
+        grid.classList.add('active');
+        startX = e.pageX - carousel.offsetLeft;
+        scrollLeft = carousel.scrollLeft;
+    });
+
+    carousel.addEventListener('mouseleave', () => {
+        isDown = false;
+        grid.classList.remove('active');
+    });
+
+    carousel.addEventListener('mouseup', () => {
+        isDown = false;
+        grid.classList.remove('active');
+    });
+
+    carousel.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - carousel.offsetLeft;
+        const walk = (x - startX) * 3; //scroll-fast
+        carousel.scrollLeft = scrollLeft - walk;
+    });
+});
