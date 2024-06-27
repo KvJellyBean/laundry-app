@@ -1,7 +1,6 @@
 @extends('layouts.app')   
 
 @section('content')
-@include('components.hero')
 
 <section class="services" id="services">
     <div class="section__container services__container">
@@ -10,8 +9,11 @@
         <div class="services__grid">
             @foreach ($servicePackages as $index => $service)
                 <div class="services__card" data-name="p-{{ $index + 1 }}">
-                    <h4>{{ $index + 1 }}. {{ $service->name }}</h4>
-                    <p class="textJustify">{{ $service->description }}</p>
+                    <h4>{{ $service->name }}</h4>
+                    <p><strong>Price:</strong> IDR. {{ number_format($service->price, 2) }}</p>
+                    <div class="buttons">
+                        <a href="/dashboard/orders/create" class="buy">Order Now</a>
+                    </div>
                 </div>
             @endforeach
         </div>
@@ -26,7 +28,7 @@
         <p class="textJustify">{{ $service->description }}</p>
         <div class="price">IDR. {{ number_format($service->price, 2) }}</div>
         <div class="buttons">
-            <a href="/order/create" class="buy">Order Now</a>
+            <a href="/dashboard/orders/create" class="buy">Order Now</a>
         </div>
     </div>
     @endforeach
@@ -44,7 +46,15 @@ document.addEventListener("DOMContentLoaded", function() {
     let previewBoxes = previewContainer.querySelectorAll('.preview');
 
     document.querySelectorAll('.services__grid .services__card').forEach(card => {
-        card.onclick = () => {
+        // Handle card click
+        card.onclick = (e) => {
+            // If the clicked element is the "Order Now" button, navigate to the order page
+            if (e.target.classList.contains('buy')) {
+                window.location.href = e.target.getAttribute('href');
+                return;
+            }
+
+            // Otherwise, show the preview
             previewContainer.style.display = 'flex';
             let name = card.getAttribute('data-name');
             previewBoxes.forEach(preview => {
@@ -75,4 +85,5 @@ document.addEventListener("DOMContentLoaded", function() {
         };
     });
 });
+
 </script>
