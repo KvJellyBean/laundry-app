@@ -37,7 +37,7 @@
                             @csrf
                         </form>
                     @else
-                        <li class="link"><a href="#founder">Founder</a></li>
+                        <li class="link"><a href="/#founder">Founder</a></li>
                         <li class="nav-item nav-link signin {{ request()->is('signin') ? 'active' : '' }}"><a href="/signin">Sign In</a></li>
                     @endif
                     </ul>

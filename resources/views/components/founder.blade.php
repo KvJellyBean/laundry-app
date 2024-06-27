@@ -1,5 +1,5 @@
 <!-- founder.blade.php -->
-<section class="founder">
+<section class="founder" id = "founder">
     <div class="section__container founder__container">
         <p class="section__subheader">Founder</p>
         <h2 class="section__header">Meet Our Founder</h2>
