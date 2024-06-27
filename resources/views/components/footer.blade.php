@@ -8,9 +8,9 @@
       <h4>Quick Links</h4>
       <div class="footer__links">
         <a href="#">Home</a>
-        <a href="#about">About</a>
-        <a href="#services">Services</a>
-        <a href="#contact">Contact</a>
+        <a href="/about">About</a>
+        <a href="/services">Services</a>
+        <a href="/contact">Contact</a>
         <a href="#info">Info</a>
         <a href="#founder">Founder</a>
       </div>
@@ -19,7 +19,7 @@
       <h4>Our Services</h4>
       <div class="footer__links">
         @foreach($servicePackages as $service)
-          <a href="#services">{{ $service->name }}</a>
+          <a href="/services">{{ $service->name }}</a>
         @endforeach
       </div>
     </div>
