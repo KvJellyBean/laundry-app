@@ -1,0 +1,127 @@
+.contact {
+    background-color: var(--secondary-color);
+}
+
+.contact.page {
+    padding: 1rem;
+    padding-top: 8%;
+}
+
+.findUsContainer {
+    padding: 5rem 0 0;
+}
+
+.findUs {
+    text-align: center;
+    padding: 20px;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+
+
+.contact__container {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    align-items: stretch;
+}
+
+.contact__content {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem; /* Memberikan jarak antar elemen */
+    flex: 1;
+}
+
+.contact__content .section__header {
+    margin-bottom: 1rem;
+}
+
+.contact__content .para {
+    margin-bottom: 2rem;
+    color: var(--text-light);
+    text-align: justify;
+}
+
+.contact__Decsription,
+.contact__grid {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.contact__Decsription {
+    justify-content: space-between;
+}
+
+.contact__card {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Memusatkan konten di dalam kartu secara horizontal */
+    justify-content: center; /* Memusatkan konten di dalam kartu secara vertikal */
+    text-align: center; /* Memusatkan teks di dalam kartu */
+}
+
+.contact__grid {
+    display: grid;
+    grid-template-columns: repeat(1, 2fr); /* Dua kolom */
+    align-items: center; /* Memusatkan item secara vertikal */
+    justify-items: center; /* Memusatkan item secara horizontal */
+}
+
+.contact__card span {
+    font-size: 1.75rem;
+    color: var(--primary-color);
+}
+
+.contact__card h4 {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.contact__card p {
+    font-weight: 500;
+}
+
+.contact__image {
+    display: grid;
+    gap: 2rem;
+}
+
+.contact__image img {
+    max-width: 450px;
+    margin: auto;
+    border-radius: 50%; /* Menjadikan border bulat */
+    border: 2px solid var(--primary-color); /* Menambah border dengan warna yang diinginkan */
+}
+
+@media (width < 900px) {
+    .contact__container {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .contact__image {
+        grid-area: 1/1/2/2;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+}
+
+@media (width < 860px) {
+    .contact__image {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+@media (max-width: 991px) {
+    .contact__container {
+        flex-direction: column; /* Ubah ke kolom pada layar kecil */
+    }
+}
+
+@media (max-width: 991px) {
+    .contact__content {
+        flex-direction: column;
+    }
+}

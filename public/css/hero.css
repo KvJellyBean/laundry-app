@@ -1,0 +1,29 @@
+.heroSection {
+    padding-top: 5rem;
+    background-image: linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.5),
+            rgba(0, 0, 0, 0.85)
+        ),
+        url("/assets/images/sarifna.jpeg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0.75rem 1.5rem;
+    outline: none;
+    font-size: 1rem;
+    color: var(--white);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn__secondary {
+    background-color: transparent;
+    border: 1px solid var(--white);
+}

@@ -16,10 +16,9 @@ use App\Http\Controllers\LandingController;
 */
 
 Route::get('/', [LandingController::class, 'home'])->name('home');
-Route::get('/about', [LandingController::class, 'about'])->name('about');
 Route::get('/services', [LandingController::class, 'services'])->name('services');
-Route::get('/contact', [LandingController::class, 'contact'])->name('contact');
-
+Route::get('/about' , [LandingController::class, 'about'])->name('about');
+Route::get('/contact' , [LandingController::class, 'contact'])->name('contact');
 Route::get('/signin', function () {
     return redirect('/dashboard/login');
 })->name('signin');

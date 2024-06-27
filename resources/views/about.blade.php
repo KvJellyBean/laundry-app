@@ -1,5 +1,7 @@
-<!-- about.blade.php -->
-<section class="about">
+@extends('layouts.app')   
+
+@section('content')
+<section class="about page">
     <div class="section__container about__container">
         <div class="about__grid">
             <div class="about__content">
@@ -34,5 +36,9 @@
         </div>
     </div>
 </section>
+
 <link rel="stylesheet" href="{{ asset('css/about.css') }}">
 
+@include('components.footer', ['servicePackages' => $servicePackages])
+
+@endsection

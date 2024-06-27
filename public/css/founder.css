@@ -1,0 +1,65 @@
+.founder {
+    background-color: var(--secondary-color-light);
+}
+
+.founder__container .para {
+    margin-block: 1rem 4rem;
+    color: var(--text-light);
+}
+
+.swiper {
+    width: 100%;
+    padding-bottom: 4rem;
+}
+
+.founder__review .swiper-pagination-bullet-active {
+    background-color: var(--primary-color);
+}
+
+.founder__review__card {
+    margin-top: 2rem;
+    position: relative;
+    isolation: isolate;
+    max-width: 600px;
+    margin-inline: auto;
+    text-align: center;
+}
+
+.founder__review__card span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 6rem;
+    line-height: 4rem;
+    color: var(--primary-color);
+    opacity: 0.1;
+}
+
+.founder__review__card p {
+    margin-bottom: 2rem;
+    color: var(--text-light);
+}
+
+.founder__review__details {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.founder__review__image img {
+    max-width: 100px;
+    border-radius: 100%;
+}
+
+.founder__review__details h4 {
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.founder__review__details h5 {
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: var(--text-light);
+}

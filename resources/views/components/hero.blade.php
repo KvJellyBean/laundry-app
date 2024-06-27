@@ -8,3 +8,4 @@
         </button>
     </div>
 </section>
+<link rel="stylesheet" href="{{ asset('css/hero.css') }}">
