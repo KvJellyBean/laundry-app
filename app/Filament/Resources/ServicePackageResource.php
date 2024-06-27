@@ -2,9 +2,8 @@
 
 namespace App\Filament\Resources;
 
-use App\Enums\TransactionStatus;
+use App\Enums\ServicePackageStatus;
 use App\Filament\Resources\ServicePackageResource\Pages;
-use App\Filament\Resources\ServicePackageResource\RelationManagers;
 use App\Models\ServicePackage;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -14,8 +13,6 @@ use Filament\Tables\Table;
 use Filament\Infolists\Infolist;
 use Filament\Infolists\Components\TextEntry;
 use Filament\Infolists\Components\Section;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Facades\Auth;
 
 class ServicePackageResource extends Resource
@@ -61,7 +58,7 @@ class ServicePackageResource extends Resource
                             ->minValue(0),
                         Forms\Components\Select::make('status')
                             ->required()
-                            ->options(TransactionStatus::class)
+                            ->options(ServicePackageStatus::class)
                             ->native(false)
                             ->placeholder('Select status')
                             ->default('active'),
