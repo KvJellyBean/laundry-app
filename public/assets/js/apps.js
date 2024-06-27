@@ -89,35 +89,36 @@ serviceReadMoreBtns.forEach((btn) => {
 });
 
 // serviceshome.js
-document.addEventListener('DOMContentLoaded', () => {
-    const carousel = document.querySelector('.services__carousel');
+document.addEventListener("DOMContentLoaded", function() {
     const grid = document.querySelector('.services__grid');
-    let isDown = false;
-    let startX;
-    let scrollLeft;
+    const cards = document.querySelectorAll('.services__card');
+    const prevButton = document.getElementById('prevButton');
+    const nextButton = document.getElementById('nextButton');
+    const cardWidth = cards[0].offsetWidth + parseFloat(getComputedStyle(cards[0]).marginRight) * 2;
+    const cardsToShow = 3;
+    let currentIndex = 0;
 
-    carousel.addEventListener('mousedown', (e) => {
-        isDown = true;
-        grid.classList.add('active');
-        startX = e.pageX - carousel.offsetLeft;
-        scrollLeft = carousel.scrollLeft;
+    function updateCarousel() {
+        grid.style.transform = `translateX(${-currentIndex * cardWidth}px)`;
+    }
+
+    nextButton.addEventListener('click', () => {
+        if (currentIndex < cards.length - cardsToShow) {
+            currentIndex++;
+            updateCarousel();
+        }
     });
 
-    carousel.addEventListener('mouseleave', () => {
-        isDown = false;
-        grid.classList.remove('active');
+    prevButton.addEventListener('click', () => {
+        if (currentIndex > 0) {
+            currentIndex--;
+            updateCarousel();
+        }
     });
 
-    carousel.addEventListener('mouseup', () => {
-        isDown = false;
-        grid.classList.remove('active');
-    });
-
-    carousel.addEventListener('mousemove', (e) => {
-        if (!isDown) return;
-        e.preventDefault();
-        const x = e.pageX - carousel.offsetLeft;
-        const walk = (x - startX) * 3; //scroll-fast
-        carousel.scrollLeft = scrollLeft - walk;
+    document.querySelectorAll('.services__card').forEach(card => {
+        card.onclick = () => {
+            window.location.href = '/services';
+        };
     });
 });

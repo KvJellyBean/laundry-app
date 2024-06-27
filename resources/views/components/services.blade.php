@@ -19,6 +19,8 @@
                     </div>
                 @endforeach
             </div>
+            <button class="carousel__button carousel__button--left" id="prevButton"><</button>
+            <button class="carousel__button carousel__button--right" id="nextButton">></button>
         </div>
     </div>
 </section>

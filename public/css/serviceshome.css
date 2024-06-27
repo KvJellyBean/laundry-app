@@ -1,10 +1,12 @@
 .services {
     background-color: var(--black);
+    position: relative;
 }
 
 .services__carousel {
     overflow: hidden;
     position: relative;
+    padding: 2rem 0;
 }
 
 .services__grid {
@@ -13,6 +15,7 @@
 }
 
 .services__card {
+    cursor: pointer;
     min-width: 300px;
     margin: 1rem;
     padding: 2rem;
@@ -20,6 +23,11 @@
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 5px;
     transition: all 0.3s ease;
+}
+
+.services__card:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
 }
 
 
@@ -41,6 +49,7 @@
     font-size: 1.2rem;
     font-weight: 600;
     text-align: center;
+    user-select: none;
 }
 
 .services__card p {
@@ -51,6 +60,8 @@
     max-width: 100%;
     height: auto;
     margin-bottom: 1rem; /* Space between image and other content */
+    user-select: none;
+    -webkit-user-drag: none;
 }
 
 /* @media (width < 900px) {
@@ -65,6 +76,27 @@
         grid-template-columns: repeat(1, 1fr);
     }
 } */
+
+.carousel__button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: white;
+    padding: 1rem;
+    cursor: pointer;
+    z-index: 10;
+    border-radius: 50%;
+}
+
+.carousel__button--left {
+    left: 0;
+}
+
+.carousel__button--right {
+    right: 0;
+}
 
 
 *{
@@ -89,3 +121,7 @@
         font-size: 50%;
     }
 }
+
+
+
+                                  
