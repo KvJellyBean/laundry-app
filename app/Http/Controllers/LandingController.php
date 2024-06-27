@@ -20,8 +20,9 @@ class LandingController extends Controller
     }
 
     public function about() {
+        $servicePackages = ServicePackage::where('status', 'active')->get();
         return view('about', [
-            'data' => $this->aboutData()
+            'servicePackages' => $servicePackages,
         ]);
     }
 
@@ -33,8 +34,9 @@ class LandingController extends Controller
     }
 
     public function contact() {
+        $servicePackages = ServicePackage::where('status', 'active')->get();
         return view('contact', [
-            'data' => $this->contactData()
+            'servicePackages' => $servicePackages,
         ]);
     }
 
