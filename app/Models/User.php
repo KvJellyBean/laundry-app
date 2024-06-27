@@ -29,6 +29,15 @@ class User extends Authenticatable
             }
         });
 
+        static::updating(function ($user) {
+            if($user->role && !$user->hasRole($user->role)) {
+                $user->assignRole($user->role);
+            }
+        });
+
+        static::deleting(function ($user) {
+            $user->removeRole($user->role);
+        });
     }
 
     public function setPasswordAttribute($value)
