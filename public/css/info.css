@@ -1,85 +1,95 @@
+/* Import font Montserrat dari Google Fonts */
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap");
 
-
+/* Styling untuk gambar di dalam container info */
 .info .container img {
     max-width: 100%;
     height: auto;
     margin: 10px 0;
-    border-radius: 8px; /* Optional for rounded corners */
+    border-radius: 8px; /* Opsional untuk sudut melengkung */
 }
 
+/* Container utama info */
 .info .container {
-    background-color: var(--secondary-color-light);
+    background-color: var(--secondary-color-light); /* Warna latar belakang */
     border-radius: 0;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35); /* Bayangan bawah */
     position: relative;
     overflow: hidden;
-    width: 768px;
-    max-width: 100%;
-    min-height: 480px;
+    width: 768px; /* Lebar kontainer maksimum */
+    max-width: 100%; /* Maksimum lebar kontainer sesuai dengan layar */
+    min-height: 480px; /* Ketinggian minimum kontainer */
     align-items: center;
     display: flex;
-    margin: 0 auto;
+    margin: 0 auto; /* Posisi tengah horizontal */
 }
 
+/* Paragraph di dalam container info */
 .info .container p {
     font-size: 14px;
     line-height: 20px;
     letter-spacing: 0.3px;
-    margin: 20px 0;
+    margin: 20px 0; /* Ruang atas dan bawah */
 }
 
+/* Span di dalam container info */
 .info .container span {
     font-size: 12px;
 }
 
+/* Link di dalam container info */
 .info .container a {
     color: #333;
     font-size: 13px;
     text-decoration: none;
-    margin: 15px 0 10px;
+    margin: 15px 0 10px; /* Ruang atas, bawah, dan bawah */
 }
 
+/* Tombol di dalam container info */
 .info .container button {
-    background-color: #512da8;
-    color: #fff;
+    background-color: #512da8; /* Warna latar belakang */
+    color: #fff; /* Warna teks */
     font-size: 12px;
-    padding: 10px 45px;
-    border: 1px solid transparent;
-    border-radius: 8px;
+    padding: 10px 45px; /* Padding atas dan bawah, kiri dan kanan */
+    border: 1px solid transparent; /* Border transparan */
+    border-radius: 8px; /* Sudut melengkung */
     font-weight: 600;
     letter-spacing: 0.5px;
     text-transform: uppercase;
-    margin-top: 10px;
+    margin-top: 10px; /* Ruang atas */
     cursor: pointer;
 }
 
+/* Styling untuk tombol tersembunyi */
 .info .container button.hidden {
     background-color: transparent;
     border-color: #fff;
 }
 
+/* Form di dalam container info */
 .info .container .form {
-    background-color: var(--secondary-color-light);
+    background-color: var(--secondary-color-light); /* Warna latar belakang */
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    padding: 0 40px;
-    height: 100%;
+    padding: 0 40px; /* Padding atas dan bawah, kiri dan kanan */
+    height: 100%; /* Tinggi sesuai kontainer */
 }
 
+/* Input di dalam form */
 .info .container input {
-    background-color: #eee;
-    border: none;
-    margin: 8px 0;
-    padding: 10px 15px;
+    background-color: #eee; /* Warna latar belakang */
+    border: none; /* Tanpa border */
+    margin: 8px 0; /* Ruang atas dan bawah */
+    padding: 10px 15px; /* Padding atas dan bawah, kiri dan kanan */
     font-size: 13px;
-    border-radius: 8px;
-    width: 100%;
-    outline: none;
+    border-radius: 8px; /* Sudut melengkung */
+    width: 100%; /* Lebar penuh */
+    outline: none; /* Tanpa outline */
 }
 
+/* Container untuk animasi masuk dan keluar */
 .info .form-container {
     position: absolute;
     top: 0;
@@ -87,16 +97,19 @@
     transition: all 0.6s ease-in-out;
 }
 
+/* Panel untuk sign-in */
 .info .sign-in {
     left: 0;
     width: 50%;
     z-index: 2;
 }
 
+/* Animasi untuk sign-in aktif */
 .info .container.active .sign-in {
     transform: translateX(100%);
 }
 
+/* Panel untuk sign-up */
 .info .sign-up {
     left: 0;
     width: 50%;
@@ -104,6 +117,7 @@
     z-index: 1;
 }
 
+/* Animasi untuk sign-up aktif */
 .info .container.active .sign-up {
     transform: translateX(100%);
     opacity: 1;
@@ -111,6 +125,7 @@
     animation: move 0.6s;
 }
 
+/* Keyframes untuk animasi geser */
 @keyframes move {
     0%,
     49.99% {
@@ -124,21 +139,24 @@
     }
 }
 
+/* Ikons sosial media di dalam info */
 .info .social-icons {
-    margin: 20px 0;
+    margin: 20px 0; /* Ruang atas dan bawah */
 }
 
+/* Ikons sosial media */
 .info .social-icons a {
     border: 1px solid #ccc;
-    border-radius: 20%;
+    border-radius: 20%; /* Sudut melengkung */
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    margin: 0 3px;
+    margin: 0 3px; /* Ruang kiri dan kanan */
     width: 40px;
     height: 40px;
 }
 
+/* Kontainer untuk animasi toggle */
 .info .toggle-container {
     position: absolute;
     top: 0;
@@ -150,27 +168,31 @@
     z-index: 90;
 }
 
+/* Animasi untuk toggle aktif */
 .info .container.active .toggle-container {
     transform: translateX(-100%);
 }
 
+/* Toggle untuk animasi */
 .info .toggle {
-    background-color: #b1550f;
-    height: 100%;
-    background: linear-gradient(to right, #bd743c, #b1550f);
-    color: #fff;
+    background-color: #b1550f; /* Warna latar belakang */
+    height: 100%; /* Tinggi sesuai */
+    background: linear-gradient(to right, #bd743c, #b1550f); /* Gradien latar belakang */
+    color: #fff; /* Warna teks */
     position: relative;
-    left: -100%;
-    height: 100%;
-    width: 200%;
+    left: -100%; /* Geser ke kiri */
+    height: 100%; /* Tinggi sesuai */
+    width: 200%; /* Lebar dua kali lipat */
     transform: translateX(0);
     transition: all 0.6s ease-in-out;
 }
 
+/* Animasi untuk toggle aktif */
 .info .container.active .toggle {
     transform: translateX(50%);
 }
 
+/* Panel untuk toggle */
 .info .toggle-panel {
     position: absolute;
     width: 50%;
@@ -179,36 +201,40 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    padding: 0 30px;
+    padding: 0 30px; /* Padding atas dan bawah, kiri dan kanan */
     text-align: center;
     top: 0;
     transform: translateX(0);
     transition: all 0.6s ease-in-out;
 }
 
+/* Toggle kiri */
 .info .toggle-left {
     transform: translateX(-200%);
 }
 
+/* Animasi untuk toggle kiri aktif */
 .info .container.active .toggle-left {
     transform: translateX(0);
 }
 
+/* Toggle kanan */
 .info .toggle-right {
     right: 0;
     transform: translateX(0);
 }
 
+/* Animasi untuk toggle kanan aktif */
 .info .container.active .toggle-right {
     transform: translateX(200%);
 }
 
+/* Background untuk bagian info */
 .info {
     background-image: linear-gradient(
         to bottom,
         rgba(0, 0, 0, 0.7),
         var(--secondary-color-light)
-
     );
     object-fit: contain;
     background-position: center center;
@@ -216,25 +242,30 @@
     background-repeat: no-repeat;
 }
 
+/* Konten info */
 .info__content {
-    max-width: 800px;
+    max-width: 800px; /* Lebar maksimum konten */
 }
 
+/* Header untuk bagian info */
 .info__content .section__header {
-    margin-bottom: 1rem;
+    margin-bottom: 1rem; /* Ruang bawah */
 }
 
+/* Paragraf untuk bagian info */
 .info__content .para {
-    max-width: 600px;
-    margin-bottom: 2rem;
+    max-width: 600px; /* Lebar maksimum paragraf */
+    margin-bottom: 2rem; /* Ruang bawah */
 }
 
+/* Tombol-tombol untuk bagian info */
 .info__btns {
     display: flex;
     align-items: center;
-    gap: 2rem;
+    gap: 2rem; /* Jarak antar elemen */
 }
 
+/* Tombol khusus untuk info */
 .btnInfo {
-    padding: 0.5rem 2rem !important;
+    padding: 0.5rem 2rem !important; /* Padding atas dan bawah, kiri dan kanan */
 }

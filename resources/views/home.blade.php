@@ -11,13 +11,16 @@
     @include('components.footer', ['servicePackages' => $servicePackages])
 
     <script>
-      var map = L.map('map').setView([-6.167744, 106.793290], 13); // Replace with your coordinates
+      // Menginisialisasi peta dengan Leaflet
+      var map = L.map('map').setView([-6.167744, 106.793290], 13); // Ganti dengan koordinat Anda
 
+      // Menambahkan lapisan tile dari OpenStreetMap
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
           attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       }).addTo(map);
 
-      L.marker([-6.167744, 106.793290]).addTo(map) // Replace with your coordinates
+      // Menambahkan marker pada peta
+      L.marker([-6.167744, 106.793290]).addTo(map) // Ganti dengan koordinat Anda
         .bindPopup('Sarifna Laundry')
         .openPopup();
     </script>

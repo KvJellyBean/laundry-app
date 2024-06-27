@@ -1,5 +1,7 @@
+/* Mengimpor font Poppins dari Google Fonts */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 
+/* Variabel CSS untuk warna dan ukuran */
 :root {
     --primary-color: #ff581f;
     --secondary-color: #111111;
@@ -10,31 +12,34 @@
     --max-width: 1200px;
 }
 
+/* Reset CSS untuk padding, margin, dan box-sizing */
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
 
+/* Gaya dasar untuk elemen body */
 body {
     font-family: "Poppins", sans-serif;
     color: var(--white);
     scroll-behavior: smooth;
 }
 
-/* section */
+/* Gaya umum untuk kontainer section */
 .section__container {
     max-width: var(--max-width);
     margin: auto;
     padding: 5rem 1rem;
 }
 
-/* header */
+/* Gaya untuk header section */
 .section__header {
     font-size: 2.5rem;
     font-weight: 600;
 }
 
+/* Gaya untuk subheader section */
 .section__subheader {
     position: relative;
     isolation: isolate;
@@ -44,6 +49,7 @@ body {
     font-weight: 500;
 }
 
+/* Gaya after pseudo-element untuk subheader */
 .section__subheader::after {
     position: absolute;
     content: "";
@@ -56,6 +62,7 @@ body {
     z-index: -1;
 }
 
+/* Gaya untuk header utama */
 header {
     position: fixed;
     top: 0;
@@ -66,7 +73,7 @@ header {
     background-color: rgba(0, 0, 0, 0.5);
 }
 
-/* Navbar */
+/* Gaya untuk elemen navigasi */
 nav {
     max-width: var(--max-width);
     margin: auto;
@@ -76,12 +83,14 @@ nav {
     justify-content: space-between;
 }
 
+/* Gaya untuk logo navigasi */
 .nav__logo a {
     font-size: 1.5rem;
     font-weight: 700;
     color: var(--white);
 }
 
+/* Gaya untuk tautan navigasi */
 .nav__links {
     list-style: none;
     display: flex;
@@ -89,6 +98,7 @@ nav {
     gap: 2rem;
 }
 
+/* Gaya untuk tautan individu */
 .link a {
     padding: 5px;
     font-size: 1rem;
@@ -97,19 +107,23 @@ nav {
     transition: 0.3s;
 }
 
+/* Gaya hover untuk tautan */
 .link a:hover {
     color: var(--primary-color);
 }
 
+/* Gaya untuk tombol menu navigasi */
 .nav__menu__btn {
     display: none;
     font-size: 1.5rem;
 }
 
+/* Gaya untuk kontainer header */
 .header__container {
     padding-block: 5rem 12rem;
 }
 
+/* Gaya untuk judul header */
 .header__container h1 {
     max-width: 900px;
     margin-inline: auto;
@@ -119,14 +133,17 @@ nav {
     text-align: center;
 }
 
+/* Gaya untuk tombol dalam kontainer header */
 .header__container .btn {
     margin: auto;
 }
 
+/* Gaya untuk teks dengan perataan justify */
 .textJustify {
     text-align: justify;
 }
 
+/* Gaya untuk item navigasi sign-in */
 .nav-item.nav-link.signin {
     transition: all 0.3s;
     position: relative;
@@ -145,6 +162,7 @@ nav {
     cursor: pointer;
 }
 
+/* Gaya untuk tautan dalam item sign-in */
 .nav-item.nav-link.signin a {
     text-align: center;
     padding: 10px 25px;
@@ -153,6 +171,7 @@ nav {
     text-transform: uppercase;
 }
 
+/* Gaya hover untuk tautan dalam item sign-in */
 .nav-item.nav-link.signin:hover a {
     color: #ff581f;
     font-weight: bold;
@@ -162,6 +181,7 @@ nav {
     color: #ff581f;
 }
 
+/* Pseudo-element after untuk item sign-in */
 .nav-item.nav-link.signin::after {
     content: "";
     position: absolute;
@@ -174,6 +194,7 @@ nav {
     z-index: -2;
 }
 
+/* Pseudo-element before untuk item sign-in */
 .nav-item.nav-link.signin::before {
     content: "";
     position: absolute;
@@ -187,6 +208,7 @@ nav {
     z-index: -1;
 }
 
+/* Gaya hover untuk item sign-in */
 .nav-item.nav-link.signin:hover {
     color: #ff581f;
 }
@@ -195,6 +217,7 @@ nav {
     width: 100%;
 }
 
+/* Gaya umum untuk tautan dalam elemen navigasi */
 nav a {
     color: #333;
     padding: 10px 20px;
@@ -202,12 +225,14 @@ nav a {
     position: relative;
 }
 
+/* Media query untuk layar dengan lebar kurang dari 900px */
 @media (width < 900px) {
     .nav__links {
         gap: 1.5rem;
     }
 }
 
+/* Media query untuk layar dengan lebar kurang dari 860px */
 @media (width < 860px) {
     nav {
         position: fixed;
@@ -252,7 +277,7 @@ nav a {
     }
 }
 
-/* Scroll bar style */
+/* Gaya untuk scrollbar */
 ::-webkit-scrollbar {
     width: 12px;
     background-color: #111111;
@@ -266,31 +291,3 @@ nav a {
 ::-webkit-scrollbar-thumb:hover {
     background-color: #e64900;
 }
-
-/* .btn__secondary {
-    background-color: transparent;
-    border: 1px solid var(--white);
-}
-
-.btn__primary {
-    background-color: var(--primary-color);
-    border: 1px solid var(--primary-color);
-}
-
-.btn span {
-    font-size: 1.2rem;
-    transition: 0.3s;
-}
-
-.btn:hover span {
-    transform: translateX(5px);
-}
-
-img {
-    display: flex;
-    width: 100%;
-}
-
-a {
-    text-decoration: none;
-} */

@@ -5,8 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>Error 400 - Bad Request</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Mengimpor font Poppins dari Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Mengimpor Bootstrap CSS dari CDN -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Mengimpor file CSS kustom error.css -->
     <link href="{{ asset('css/error.css') }}" rel="stylesheet">
 </head>
 <body>
@@ -19,16 +22,21 @@
                         <h2 class="display-4">Bad Request</h2>
                         <hr class="my-4 border-orange">
                         <p class="lead">The server cannot or will not process the request due to something that is perceived to be a client error.</p>
+                        <!-- Tombol untuk kembali ke halaman utama -->
                         <a href="{{ url('/') }}" class="btn btn-orange btn-lg mb-2  text-white">Back to Homepage</a>
                         <br>
+                        <!-- Tombol untuk kembali ke halaman sebelumnya menggunakan JavaScript -->
                         <button class="btn btn-outline-light btn-lg gobackBtn" onclick="javascript:history.back()">< Go Back</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <!-- Mengimpor jQuery dari CDN -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <!-- Mengimpor Popper.js dari CDN -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <!-- Mengimpor Bootstrap JS dari CDN -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

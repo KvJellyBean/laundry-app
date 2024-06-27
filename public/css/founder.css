@@ -1,22 +1,27 @@
 .founder {
+    /* Styles untuk bagian founder */
     background-color: var(--secondary-color-light);
 }
 
 .founder__container .para {
+    /* Styles untuk paragraf di dalam container founder */
     margin-block: 1rem 4rem;
     color: var(--text-light);
 }
 
 .swiper {
+    /* Styles untuk slider swiper */
     width: 100%;
     padding-bottom: 4rem;
 }
 
 .founder__review .swiper-pagination-bullet-active {
+    /* Styles untuk titik pagination aktif di dalam review founder */
     background-color: var(--primary-color);
 }
 
 .founder__review__card {
+    /* Styles untuk kartu review founder */
     margin-top: 2rem;
     position: relative;
     isolation: isolate;
@@ -26,6 +31,7 @@
 }
 
 .founder__review__card span {
+    /* Styles untuk span di dalam kartu review founder */
     position: absolute;
     top: 0;
     left: 0;
@@ -36,11 +42,13 @@
 }
 
 .founder__review__card p {
+    /* Styles untuk paragraf di dalam kartu review founder */
     margin-bottom: 2rem;
     color: var(--text-light);
 }
 
 .founder__review__details {
+    /* Styles untuk detail review founder */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -49,16 +57,19 @@
 }
 
 .founder__review__image img {
+    /* Styles untuk gambar di dalam detail review founder */
     max-width: 100px;
     border-radius: 100%;
 }
 
 .founder__review__details h4 {
+    /* Styles untuk judul h4 di dalam detail review founder */
     font-size: 1.2rem;
     font-weight: 500;
 }
 
 .founder__review__details h5 {
+    /* Styles untuk judul h5 di dalam detail review founder */
     font-size: 0.9rem;
     font-weight: 400;
     color: var(--text-light);

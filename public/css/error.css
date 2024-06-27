@@ -1,41 +1,54 @@
+/* Mengimpor font Poppins dari Google Fonts */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 
+/* Styling dasar untuk body */
 body {
-    font-family: 'Poppins';
-    background-color: #1a202c;
-    color: #ffffff;
-    display: flex;
-    justify-content: center;
-    align-items: center ;
-    height: 100dvh;
+    font-family: 'Poppins'; /* Menggunakan font Poppins untuk seluruh body */
+    background-color: #1a202c; /* Warna latar belakang */
+    color: #ffffff; /* Warna teks */
+    display: flex; /* Menggunakan flexbox untuk layout */
+    justify-content: center; /* Memusatkan konten secara horizontal */
+    align-items: center ; /* Memusatkan konten secara vertikal */
+    height: 100dvh; /* Tinggi viewport */
 }
+
+/* Teks berwarna orange */
 .text-orange {
-    color: #ff6600;
-    font-weight: bold;
-    font-size: 10rem;
-    margin-bottom: -1rem;
+    color: #ff6600; /* Warna teks orange */
+    font-weight: bold; /* Tebal teks */
+    font-size: 10rem; /* Ukuran teks besar */
+    margin-bottom: -1rem; /* Mengatur margin bawah */
 }
+
+/* Tombol orange */
 .btn-orange {
-    background-color: #ff6600;
-    border-color: #ff6600;
+    background-color: #ff6600; /* Warna latar belakang tombol orange */
+    border-color: #ff6600; /* Warna border tombol orange */
 }
+
+/* Efek hover tombol orange */
 .btn-orange:hover {
-    background-color: #e65c00;
-    border-color: #e65c00;
+    background-color: #e65c00; /* Warna latar belakang tombol orange saat hover */
+    border-color: #e65c00; /* Warna border tombol orange saat hover */
 }
+
+/* Background dark */
 .bg-dark {
-    background-color: #1a202c;
+    background-color: #1a202c; /* Warna latar belakang gelap */
 }
 
+/* Lead text styling */
 .lead {
-    margin-top: -1.5rem;
-    margin-bottom: 2rem;
+    margin-top: -1.5rem; /* Mengatur margin atas */
+    margin-bottom: 2rem; /* Mengatur margin bawah */
 }
 
+/* Background card */
 .bgcard {
-    padding: 1.5rem;
+    padding: 1.5rem; /* Padding untuk card */
 }
 
+/* Styling untuk tombol "Go Back" */
 .gobackBtn {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.5rem; /* Mengatur margin bawah tombol "Go Back" */
 }

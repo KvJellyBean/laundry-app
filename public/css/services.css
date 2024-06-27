@@ -1,175 +1,180 @@
-/* CSS for services */
+/* CSS untuk bagian layanan */
+
 * {
-    margin:0; padding:0;
-   box-sizing: border-box;
-   outline: none; border:none;
-   text-decoration: none;
-   transition: all .2s linear;
-   text-transform: capitalize;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Model kotak dengan border-box */
+    outline: none;
+    border: none; /* Tidak ada border */
+    text-decoration: none; /* Tidak ada dekorasi teks */
+    transition: all .2s linear; /* Transisi umum */
+    text-transform: capitalize; /* Mengubah teks menjadi huruf kapital */
 }
+
 .services {
-    background-color: var(--black);
-    padding: 3.5rem .5rem;
+    background-color: var(--black); /* Warna latar belakang */
+    padding: 3.5rem .5rem; /* Padding atas dan bawah */
 }
 
 .services__grid {
-    margin-top: 4rem;
+    margin-top: 4rem; /* Jarak atas */
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
+    grid-template-columns: repeat(3, 1fr); /* Tiga kolom dengan lebar sama */
+    gap: 2rem; /* Jarak antar elemen */
 }
 
 .services__card {
-    padding: 2rem;
-    background: rgba(255, 255, 255, 0.1); /* Transparent background */
-    border: 1px solid rgba(255, 255, 255, 0.2); /* Light border */
-    border-radius: 5px;
-    transition: all 0.3s ease;
+    padding: 2rem; /* Padding dalam kartu */
+    background: rgba(255, 255, 255, 0.1); /* Latar belakang transparan */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Garis pinggir tipis */
+    border-radius: 5px; /* Sudut bulat */
+    transition: all 0.3s ease; /* Transisi umum */
 }
 
 .services__card h4 {
-    margin-bottom: 0.5rem;
-    font-size: 1.2rem;
-    font-weight: 600;
-    text-align: center;
+    margin-bottom: 0.5rem; /* Jarak bawah */
+    font-size: 1.2rem; /* Ukuran font */
+    font-weight: 600; /* Ketebalan font */
+    text-align: center; /* Pusat teks */
 }
 
 .services__card p {
-    color: var(--text-light);
-    align-items: center;
-    text-align: center;
+    color: var(--text-light); /* Warna teks */
+    align-items: center; /* Pusatkan vertikal */
+    text-align: center; /* Pusat teks */
 }
 
 .services__grid .buttons {
-    display: flex;
-    gap: 1.5rem;
-    flex-wrap: wrap;
-    margin-top: 1rem;
+    display: flex; /* Tampilan fleksibel */
+    gap: 1.5rem; /* Jarak antar elemen */
+    flex-wrap: wrap; /* Wrap elemen */
+    margin-top: 1rem; /* Jarak atas */
 }
 
 .services__grid .buttons a {
-    flex: 1 1 14rem;
-    padding: 0.5rem;
-    font-size: 1rem;
-    color: #ff581f;
-    border: .1rem solid #444;
-    border-radius: .5rem;
-    text-align: center;
-    transition: all 0.3s ease;
+    flex: 1 1 14rem; /* Fleksibilitas lebar */
+    padding: 0.5rem; /* Padding */
+    font-size: 1rem; /* Ukuran font */
+    color: #ff581f; /* Warna teks */
+    border: .1rem solid #444; /* Garis tipis */
+    border-radius: .5rem; /* Sudut bulat */
+    text-align: center; /* Pusat teks */
+    transition: all 0.3s ease; /* Transisi umum */
 }
 
 .services__grid .buttons a.buy:hover,
 .services__grid .buttons a.buy:focus,
 .services__grid .buttons a.buy:active {
-    background: #ff581f;
-    color: #fff;
+    background: #ff581f; /* Warna latar belakang saat hover/fokus/aktif */
+    color: #fff; /* Warna teks saat hover/fokus/aktif */
 }
 
 .services-preview {
-    position: fixed;
-    top: 0; left: 0;
-    min-height: 100vh;
-    width: 100%;
-    background: rgba(0, 0, 0, .8);
-    display: none;
-    align-items: center;
-    justify-content: center;
+    position: fixed; /* Posisi tetap */
+    top: 0;
+    left: 0;
+    min-height: 100vh; /* Ketinggian minimum */
+    width: 100%; /* Lebar penuh */
+    background: rgba(0, 0, 0, .8); /* Latar belakang hitam transparan */
+    display: none; /* Tidak ditampilkan awal */
+    align-items: center; /* Pusatkan vertikal */
+    justify-content: center; /* Pusatkan horizontal */
 }
 
 .services-preview .preview {
-    display: none;
-    padding: 1.5rem 2.5rem 2.5rem;
-    text-align: center;
-    background: black;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    position: relative;
-    margin: 2rem;
-    width: 40rem;
-    border-radius: 5px;
+    display: none; /* Tidak ditampilkan awal */
+    padding: 1.5rem 2.5rem 2.5rem; /* Padding */
+    text-align: center; /* Pusat teks */
+    background: black; /* Warna latar belakang */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Garis tipis */
+    position: relative; /* Posisi relatif */
+    margin: 2rem; /* Jarak luar */
+    width: 40rem; /* Lebar */
+    border-radius: 5px; /* Sudut bulat */
 }
 
 .services-preview .preview.active {
-    display: inline-block;
+    display: inline-block; /* Tampilkan saat aktif */
 }
 
 .services-preview .preview .fa-times {
-    position: absolute;
-    top: -25; 
-    right: -20;
-    cursor: pointer;
-    color: white;
-    font-size: 1.5rem;
-    background-color: #ff581f;
-    border-radius: 100%;
-    padding: .5rem .75rem;
+    position: absolute; /* Posisi absolut */
+    top: -25; /* Posisi atas */
+    right: -20; /* Posisi kanan */
+    cursor: pointer; /* Kursor */
+    color: white; /* Warna teks */
+    font-size: 1.5rem; /* Ukuran font */
+    background-color: #ff581f; /* Warna latar belakang */
+    border-radius: 100%; /* Sudut bulat */
+    padding: .5rem .75rem; /* Padding */
 }
 
 .services-preview .preview .fa-times:hover {
-    transform: rotate(90deg);
+    transform: rotate(90deg); /* Efek hover */
 }
 
 .services-preview .preview h3 {
-    color: #777;
-    padding: .5rem 0;
-    font-size: 2rem;
+    color: #777; /* Warna teks */
+    padding: .5rem 0; /* Padding */
+    font-size: 2rem; /* Ukuran font */
 }
 
 .services-preview .preview p.textJustify {
-    line-height: 1.5;
-    padding: 1rem 0;
-    text-align: center;
-    font-size: 1rem;
-    color: #777;
+    line-height: 1.5; /* Tinggi baris */
+    padding: 1rem 0; /* Padding */
+    text-align: center; /* Pusat teks */
+    font-size: 1rem; /* Ukuran font */
+    color: #777; /* Warna teks */
 }
 
 .services-preview .preview .price {
-    padding: 1rem 0;
-    font-size: 1.25rem;
-    font-weight: bold;
-    color: #27ae60;
+    padding: 1rem 0; /* Padding */
+    font-size: 1.25rem; /* Ukuran font */
+    font-weight: bold; /* Ketebalan font */
+    color: #27ae60; /* Warna teks */
 }
 
 .services-preview .preview .buttons {
-    display: flex;
-    margin-top: 1rem;
-    margin: auto;
-    width: 40%;
+    display: flex; /* Tampilan fleksibel */
+    margin-top: 1rem; /* Jarak atas */
+    margin: auto; /* Pusatkan horizontal */
+    width: 40%; /* Lebar */
 }
 
 .services-preview .preview .buttons a {
-    flex: 1 1 14rem;
-    padding: .5rem;
-    font-size: 1rem;
-    color: #ff581f;
-    border: .1rem solid #444;
+    flex: 1 1 14rem; /* Fleksibilitas lebar */
+    padding: .5rem; /* Padding */
+    font-size: 1rem; /* Ukuran font */
+    color: #ff581f; /* Warna teks */
+    border: .1rem solid #444; /* Garis tipis */
 }
 
 .services-preview .preview .buttons a.buy:hover {
-    background: #ff581f;
-    color: #fff;
+    background: #ff581f; /* Warna latar belakang saat hover */
+    color: #fff; /* Warna teks saat hover */
 }
 
 @media (max-width: 900px) {
     .services__grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 2rem 1rem;
+        grid-template-columns: repeat(2, 1fr); /* Dua kolom pada layar kecil */
+        gap: 2rem 1rem; /* Jarak antar elemen */
     }
 }
 
 @media (max-width: 860px) {
     .services__grid {
-        grid-template-columns: repeat(1, 1fr);
+        grid-template-columns: repeat(1, 1fr); /* Satu kolom pada layar sangat kecil */
     }
 }
 
 @media (max-width: 768px) {
     .services-preview .preview img {
-        height: 20rem;
+        height: 20rem; /* Tinggi gambar pada layar kecil */
     }
 }
 
 @media (max-width: 450px) {
     html {
-        font-size: 50%;
+        font-size: 50%; /* Ukuran font 50% pada layar sangat kecil */
     }
 }

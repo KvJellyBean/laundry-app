@@ -1,16 +1,20 @@
+/* Gaya untuk bagian kontak */
 .contact {
     background-color: var(--secondary-color);
 }
 
+/* Gaya untuk halaman kontak */
 .contact.page {
     padding: 1rem;
     padding-top: 8%;
 }
 
+/* Gaya untuk kontainer "Find Us" */
 .findUsContainer {
     padding: 5rem 0 0;
 }
 
+/* Gaya untuk elemen "Find Us" */
 .findUs {
     text-align: center;
     padding: 20px;
@@ -18,8 +22,7 @@
     margin-bottom: 1rem;
 }
 
-
-
+/* Gaya untuk kontainer kontak */
 .contact__container {
     display: flex;
     flex-direction: row;
@@ -27,6 +30,7 @@
     align-items: stretch;
 }
 
+/* Gaya untuk konten kontak */
 .contact__content {
     display: flex;
     flex-direction: row;
@@ -34,16 +38,19 @@
     flex: 1;
 }
 
+/* Gaya untuk header bagian dalam konten kontak */
 .contact__content .section__header {
     margin-bottom: 1rem;
 }
 
+/* Gaya untuk paragraf dalam konten kontak */
 .contact__content .para {
     margin-bottom: 2rem;
     color: var(--text-light);
     text-align: justify;
 }
 
+/* Gaya untuk deskripsi dan grid kontak */
 .contact__Decsription,
 .contact__grid {
     flex: 1;
@@ -51,10 +58,12 @@
     flex-direction: column;
 }
 
+/* Gaya khusus untuk deskripsi kontak */
 .contact__Decsription {
     justify-content: space-between;
 }
 
+/* Gaya untuk kartu kontak */
 .contact__card {
     display: flex;
     flex-direction: column;
@@ -63,6 +72,7 @@
     text-align: center; /* Memusatkan teks di dalam kartu */
 }
 
+/* Gaya untuk grid kontak */
 .contact__grid {
     display: grid;
     grid-template-columns: repeat(1, 2fr); /* Dua kolom */
@@ -70,26 +80,31 @@
     justify-items: center; /* Memusatkan item secara horizontal */
 }
 
+/* Gaya untuk elemen span dalam kartu kontak */
 .contact__card span {
     font-size: 1.75rem;
     color: var(--primary-color);
 }
 
+/* Gaya untuk heading dalam kartu kontak */
 .contact__card h4 {
     font-size: 2rem;
     font-weight: 700;
 }
 
+/* Gaya untuk paragraf dalam kartu kontak */
 .contact__card p {
     font-weight: 500;
 }
 
+/* Gaya untuk gambar dalam kontak */
 .contact__image {
     display: grid;
     gap: 2rem;
     margin-left: 2rem;
 }
 
+/* Gaya untuk elemen gambar dalam kontak */
 .contact__image img {
     max-width: 450px;
     margin: auto;
@@ -97,7 +112,7 @@
     border: 2px solid var(--primary-color); /* Menambah border dengan warna yang diinginkan */
 }
 
-
+/* Media queries untuk layar dengan lebar kurang dari 900px */
 @media (width < 900px) {
     .contact__container {
         grid-template-columns: repeat(1, 1fr);
@@ -110,19 +125,19 @@
     }
 }
 
+/* Media queries untuk layar dengan lebar kurang dari 860px */
 @media (width < 860px) {
     .contact__image {
         grid-template-columns: repeat(1, 1fr);
     }
 }
 
+/* Media queries untuk layar dengan lebar maksimum 991px */
 @media (max-width: 991px) {
     .contact__container {
         flex-direction: column; /* Ubah ke kolom pada layar kecil */
     }
-}
 
-@media (max-width: 991px) {
     .contact__content {
         flex-direction: column;
     }

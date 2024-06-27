@@ -1,11 +1,11 @@
 .footer {
-    background-color: var(--black);
+    background-color: var(--black); /* Warna latar belakang footer */
 }
 
 .footer__container {
     display: grid;
-    grid-template-columns: 1.5fr repeat(3, 1fr);
-    gap: 2rem;
+    grid-template-columns: 1.5fr repeat(3, 1fr); /* Susunan kolom footer dengan lebar proporsional */
+    gap: 2rem; /* Jarak antar elemen di dalam grid footer */
 }
 
 .footer__col h5 a {
@@ -13,12 +13,12 @@
     margin-bottom: 1rem;
     font-size: 1.5rem;
     font-weight: 600;
-    color: var(--white);
+    color: var(--white); /* Warna teks judul tautan footer */
 }
 
 .footer__col p {
     margin-bottom: 2rem;
-    color: var(--text-light);
+    color: var(--text-light); /* Warna teks konten di dalam kolom footer */
 }
 
 .footer__socials {
@@ -32,16 +32,16 @@
 .footer__socials a {
     padding: 5px 10px;
     font-size: 1.25rem;
-    color: var(--primary-color);
-    background-color: var(--secondary-color-light);
-    border-radius: 100%;
+    color: var(--primary-color); /* Warna ikon media sosial di footer */
+    background-color: var(--secondary-color-light); /* Warna latar belakang ikon media sosial di footer */
+    border-radius: 100%; /* Membuat sudut ikon media sosial menjadi bulat */
     cursor: pointer;
-    transition: 0.3s;
+    transition: 0.3s; /* Transisi hover pada ikon media sosial */
 }
 
 .footer__socials a:hover {
-    color: var(--white);
-    background-color: var(--primary-color);
+    color: var(--white); /* Warna teks ikon media sosial saat dihover */
+    background-color: var(--primary-color); /* Warna latar belakang ikon media sosial saat dihover */
 }
 
 .footer__col h4 {
@@ -53,23 +53,23 @@
 .footer__links a {
     margin-bottom: 1rem;
     display: flex;
-    color: var(--text-light);
-    transition: 0.3s;
+    color: var(--text-light); /* Warna teks tautan footer */
+    transition: 0.3s; /* Transisi hover pada tautan footer */
 }
 
 .footer__links a:hover {
-    color: var(--primary-color);
+    color: var(--primary-color); /* Warna teks tautan footer saat dihover */
 }
 
 .footer__bar {
     padding: 1rem;
     font-size: 0.8rem;
     text-align: center;
-    color: var(--text-light);
+    color: var(--text-light); /* Warna teks bar pada bagian bawah footer */
 }
 
 @media (width < 900px) {
     .footer__container {
-        grid-template-columns: 2fr 1fr;
+        grid-template-columns: 2fr 1fr; /* Susunan kolom footer untuk layar dengan lebar kurang dari 900px */
     }
 }

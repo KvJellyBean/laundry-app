@@ -1,19 +1,23 @@
+/* Gaya umum untuk elemen about */
 .about {
     background-color: var(--secondary-color);
 }
 
+/* Gaya khusus untuk elemen about pada halaman */
 .about.page {
     padding-top: 15rem;
 }
 
+/* Gaya untuk kontainer utama elemen about */
 .about__container {
     padding-block: 0;
 }
 
+/* Gaya untuk grid elemen about */
 .about__grid {
     padding: 2rem;
     display: grid;
-    grid-template-columns: 1.5fr 1fr;
+    grid-template-columns: 1.5fr 1fr; /* Dua kolom, kolom pertama lebih lebar */
     gap: 4rem;
     align-items: center;
     background-color: var(--secondary-color-light);
@@ -21,25 +25,30 @@
     border-radius: 10px;
 }
 
+/* Gaya untuk header di dalam konten elemen about */
 .about__content .section__header {
     margin-bottom: 1rem;
 }
 
+/* Gaya untuk paragraf di dalam konten elemen about */
 .about__content .para {
     color: var(--text-light);
 }
 
+/* Gaya untuk daftar elemen about */
 .about__list {
     display: grid;
     gap: 2rem;
 }
 
+/* Gaya untuk item dalam daftar elemen about */
 .about__item {
     display: flex;
     align-items: center;
     gap: 2rem;
 }
 
+/* Gaya untuk ikon dalam item daftar elemen about */
 .about__item span {
     padding: 13px 20px;
     font-size: 1.75rem;
@@ -48,13 +57,15 @@
     border-radius: 5px;
 }
 
+/* Gaya untuk judul dalam item daftar elemen about */
 .about__item h4 {
     font-size: 1.2rem;
     font-weight: 600;
 }
 
+/* Media query untuk layar dengan lebar kurang dari 900px */
 @media (width < 900px) {
     .about__grid {
-        grid-template-columns: repeat(1, 1fr);
+        grid-template-columns: repeat(1, 1fr); /* Mengubah grid menjadi satu kolom */
     }
 }

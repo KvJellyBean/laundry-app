@@ -1,17 +1,22 @@
 <!-- founder.blade.php -->
-<section class="founder" id = "founder">
+<section class="founder" id="founder">
+    <!-- Container untuk seluruh section founder -->
     <div class="section__container founder__container">
+        <!-- Subheader dan Header untuk section founder -->
         <p class="section__subheader">Founder</p>
         <h2 class="section__header">Meet Our Founder</h2>
+        
+        <!-- Container untuk review founder -->
         <div class="founder__review">
-            <!-- Slider main container -->
+            <!-- Slider utama menggunakan Swiper -->
             <div class="swiper">
-                <!-- Additional required wrapper -->
+                <!-- Wrapper tambahan yang diperlukan untuk Swiper -->
                 <div class="swiper-wrapper">
-                    <!-- Slides -->
+                    <!-- Slide pertama -->
                     <div class="swiper-slide">
                         <div class="founder__review__card">
                             <span><i class="ri-double-quotes-r"></i></span>
+                            <!-- Detail review founder -->
                             <div class="founder__review__details">
                                 <div class="founder__review__image">
                                     <img src="assets/images/kevin.png" alt="founder" />
@@ -21,13 +26,17 @@
                                     <h5>535220084</h5>
                                 </div>
                             </div>
+                            <!-- Social media links untuk founder -->
                             <div class="footer__socials">
                                 <a href="https://www.instagram.com/natanvinx/" target="_blank"><i class="ri-instagram-line"></i></a>
                                 <a href="https://www.linkedin.com/in/kevin-natanael-44929b26b/" target="_blank"><i class="ri-linkedin-fill"></i></a>
                             </div>
+                            <!-- Deskripsi singkat dari founder -->
                             <p>Welcome to Sarifna Laundry, where we're redefining clean living with passion and innovation.</p>
                         </div>
                     </div>
+
+                    <!-- Slide kedua -->
                     <div class="swiper-slide">
                         <div class="founder__review__card">
                             <span><i class="ri-double-quotes-r"></i></span>
@@ -47,6 +56,8 @@
                             <p>Experience the difference at Sarifna Laundry, where quality meets convenience for all your laundry needs.</p>
                         </div>
                     </div>
+
+                    <!-- Slide ketiga -->
                     <div class="swiper-slide">
                         <div class="founder__review__card">
                             <span><i class="ri-double-quotes-r"></i></span>
@@ -67,11 +78,11 @@
                         </div>
                     </div>
                 </div>
-                <!-- If we need pagination -->
+                <!-- Jika perlu pagination -->
                 <div class="swiper-pagination"></div>
             </div>
         </div>
     </div>
 </section>
+<!-- Link ke stylesheet untuk halaman founder -->
 <link rel="stylesheet" href="{{ asset('css/founder.css') }}">
-

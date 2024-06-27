@@ -42,19 +42,22 @@
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
+    // Seleksi kontainer pratinjau layanan
     let previewContainer = document.querySelector('.services-preview');
+    // Seleksi semua kotak pratinjau
     let previewBoxes = previewContainer.querySelectorAll('.preview');
 
+    // Tangani setiap kartu layanan di grid
     document.querySelectorAll('.services__grid .services__card').forEach(card => {
-        // Handle card click
+        // Tangani klik pada kartu layanan
         card.onclick = (e) => {
-            // If the clicked element is the "Order Now" button, navigate to the order page
+            // Jika elemen yang diklik adalah tombol "Order Now", arahkan ke halaman pesanan
             if (e.target.classList.contains('buy')) {
                 window.location.href = e.target.getAttribute('href');
                 return;
             }
 
-            // Otherwise, show the preview
+            // Jika bukan, tampilkan pratinjau
             previewContainer.style.display = 'flex';
             let name = card.getAttribute('data-name');
             previewBoxes.forEach(preview => {
@@ -66,7 +69,7 @@ document.addEventListener("DOMContentLoaded", function() {
             });
         };
 
-        // Add hover effect
+        // Tambahkan efek hover pada kartu
         card.onmouseover = () => {
             card.style.backgroundColor = "rgba(255, 255, 255, 0.2)";
             card.style.transform = "scale(1.05)";
@@ -78,6 +81,7 @@ document.addEventListener("DOMContentLoaded", function() {
         };
     });
 
+    // Tangani klik pada tombol close pada pratinjau
     previewBoxes.forEach(preview => {
         preview.querySelector('.fa-times').onclick = () => {
             preview.classList.remove('active');

@@ -5,8 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>Error 503 - Service Unavailable</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Mengimpor font Poppins dari Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Mengimpor Bootstrap CSS dari CDN -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Mengimpor file CSS kustom error.css -->
     <link href="{{ asset('css/error.css') }}" rel="stylesheet">
 </head>
 <body>
@@ -15,20 +18,28 @@
             <div class="col-md-8 bgcard d-flex justify-content-center align-item-center">
                 <div class="card bg-dark text-white shadow-lg">
                     <div class="card-body">
+                        <!-- Judul error dengan kode status -->
                         <h1 class="display-1 text-orange">503</h1>
+                        <!-- Deskripsi error -->
                         <h2 class="display-4">Service Unavailable</h2>
                         <hr class="my-4 border-orange">
+                        <!-- Penjelasan bahwa server saat ini tidak dapat menangani permintaan karena server sedang mengalami beban berlebihan sementara atau sedang dalam perawatan -->
                         <p class="lead">The server is currently unable to handle the request due to a temporary overloading or maintenance of the server.</p>
-                        <a href="{{ url('/') }}" class="btn btn-orange btn-lg mb-2  text-white">Back to Homepage</a>
+                        <!-- Tombol untuk kembali ke halaman utama -->
+                        <a href="{{ url('/') }}" class="btn btn-orange btn-lg mb-2 text-white">Back to Homepage</a>
                         <br>
+                        <!-- Tombol untuk kembali ke halaman sebelumnya menggunakan JavaScript -->
                         <button class="btn btn-outline-light btn-lg gobackBtn" onclick="javascript:history.back()">< Go Back</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <!-- Mengimpor jQuery dari CDN -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <!-- Mengimpor Popper.js dari CDN -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <!-- Mengimpor Bootstrap JS dari CDN -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

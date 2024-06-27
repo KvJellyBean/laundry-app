@@ -2,6 +2,7 @@
 <section class="contact" id="contact">
     <div class="section__container contact__container">
         <div class="contact__content">
+            <!-- Bagian deskripsi kontak -->
             <div class="contact__Decsription">
                 <p class="section__subheader">Our Contact</p>
                 <h2 class="section__header">Contact</h2>
@@ -10,16 +11,20 @@
                 </p>
             </div>
 
+            <!-- Bagian gambar kontak -->
             <div class="contact__image">
                 <img src="assets/images/laundry.jpg" alt="contact" />
             </div>
 
+            <!-- Bagian informasi kontak -->
             <div class="contact__grid">
+                <!-- Kartu informasi telepon -->
                 <div class="contact__card">
                     <span><i class="ri-phone-line"></i></span>
                     <h4>PHONE</h4>
                     <p>0812-8043-999</p>
                 </div>
+                <!-- Kartu informasi lokasi -->
                 <div class="contact__card">
                     <span><i class="ri-building-4-fill"></i></span>
                     <h4>LOCATION</h4>
@@ -28,10 +33,11 @@
             </div>
         </div>
     </div>
+    <!-- Bagian peta lokasi -->
     <div class="findUsContainer">
         <h2 class="findUs">Find Us on The Map</h2>
         <div id="map" style="height: 400px;"></div>
     </div>
 </section>
+<!-- Link ke stylesheet untuk halaman contact -->
 <link rel="stylesheet" href="{{ asset('css/contact.css') }}">
-
