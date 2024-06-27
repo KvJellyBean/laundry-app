@@ -23,7 +23,6 @@ use Filament\Pages\Dashboard;
 use Filament\Panel;
 use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
-use Filament\Widgets;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Cookie\Middleware\EncryptCookies;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
@@ -87,8 +86,8 @@ class AdminPanelProvider extends PanelProvider
                             ->items(array_merge(
                                 ($user && $user->can('roles-permissions')) ? PermissionResource::getNavigationItems() : [],
                                 ($user && $user->can('roles-permissions')) ? RoleResource::getNavigationItems() : [],
-                                UserResource::getNavigationItems(),
-                                ServicePackageResource::getNavigationItems()
+                                ($user && $user->can('view user')) ? UserResource::getNavigationItems() : [],
+                                ($user && $user->can('view service packages')) ? ServicePackageResource::getNavigationItems() : [],
                             )),
                         NavigationGroup::make($ordersTransactionsGroup)
                             ->items([
@@ -96,9 +95,11 @@ class AdminPanelProvider extends PanelProvider
                                 ...TransactionResource::getNavigationItems(),
                             ]),
                         NavigationGroup::make('Reports')
-                            ->items([
-                                ...FinancialReportResource::getNavigationItems(),
-                            ]),
+                            ->items(
+                                array_merge(
+                                    ($user && $user->can('view financial reports')) ? FinancialReportResource::getNavigationItems() : [],
+                                ),
+                            ),
                     ]);
             });
     }
