@@ -138,7 +138,7 @@ class TransactionResource extends Resource
                 Tables\Columns\ImageColumn::make('qr_code')
                     ->alignCenter()
                     ->label('Bank Transfer')
-                    ->defaultImageUrl(asset('images/qr.png')),
+                    ->defaultImageUrl(asset('assets/images/qr.png')),
                 Tables\Columns\TextColumn::make('paid_at')
                     ->date()
                     ->sortable(),
