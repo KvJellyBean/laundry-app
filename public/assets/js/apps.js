@@ -121,4 +121,16 @@ document.addEventListener("DOMContentLoaded", function() {
             window.location.href = '/services';
         };
     });
+
+    // Menambahkan efek hover pada seluruh area kartu layanan
+    document.querySelectorAll('.services__card').forEach(card => {
+        card.addEventListener('mouseover', () => {
+            card.classList.add('hover');
+        });
+
+        card.addEventListener('mouseout', () => {
+            card.classList.remove('hover');
+        });
+    });
 });
+
