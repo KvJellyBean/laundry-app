@@ -42,7 +42,7 @@
 
 Sarifna Laundry Website is an advanced web-based application designed to enhance the operational efficiency of Sarifna Laundry. This application aims to streamline various aspects of the laundry service, including user registration, order management, transaction processing, financial reporting, and service package management. By leveraging modern web technologies, Sarifna Laundry Website provides an intuitive and user-friendly interface for both customers and staff, ensuring a seamless and efficient experience.
 
-Dibuat oleh:
+Developed by:
 **Ari Wijaya (535220060)**
 **Richard Vincentius (535220077)**
 **Kevin Natanael (535220084)**
