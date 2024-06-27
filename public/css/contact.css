@@ -87,6 +87,7 @@
 .contact__image {
     display: grid;
     gap: 2rem;
+    margin-left: 2rem;
 }
 
 .contact__image img {
@@ -95,6 +96,7 @@
     border-radius: 50%; /* Menjadikan border bulat */
     border: 2px solid var(--primary-color); /* Menambah border dengan warna yang diinginkan */
 }
+
 
 @media (width < 900px) {
     .contact__container {
