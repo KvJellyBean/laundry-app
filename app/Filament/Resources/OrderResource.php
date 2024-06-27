@@ -102,21 +102,21 @@ class OrderResource extends Resource
                     ]),
                 Forms\Components\Select::make('staff_id')
                     ->placeholder('Enter staff')
-                    ->hidden(fn () => $user->hasRole('user'))
+                    ->hidden(fn () => $user->role === 'user')
                     ->native(false)
                     ->preload()
                     ->searchable()
                     ->relationship(name: 'staff', titleAttribute: 'name')
-                    ->disabled(fn () => $user->hasRole('user')),
+                    ->disabled(fn () => $user->role === 'user'),
                 Forms\Components\Select::make('status')
                     ->required()
                     ->options(OrderStatus::class)
-                    ->hidden(fn () => $user->hasRole('user'))
+                    ->hidden(fn () => $user->role === 'user')
                     ->native(false)
                     ->placeholder('Enter status')
                     ->reactive()
                     ->default('pending')
-                    ->disabled(fn () => $user->hasRole('user'))
+                    ->disabled(fn () => $user->role === 'user')
                     ->afterStateUpdated(function ($state, callable $set) {
                         if ($state === 'completed' || $state === 'Completed') {
                             $set('completed_at', now());
@@ -131,8 +131,8 @@ class OrderResource extends Resource
                     }),
                 Forms\Components\DatePicker::make('processed_at')
                     ->reactive()
-                    ->hidden(fn () => $user->hasRole('user'))
-                    ->readonly(fn () => $user->hasRole('user'))
+                    ->hidden(fn () => $user->role === 'user')
+                    ->readOnly(fn () => $user->role === 'user')
                     ->afterStateUpdated(function ($state, callable $set) {
                         if ($state) {
                             $set('status', 'processed');
@@ -140,8 +140,8 @@ class OrderResource extends Resource
                     }),
                 Forms\Components\DatePicker::make('completed_at')
                     ->reactive()
-                    ->hidden(fn () => $user->hasRole('user'))
-                    ->readonly(fn () => $user->hasRole('user'))
+                    ->hidden(fn () => $user->role === 'user')
+                    ->readOnly(fn () => $user->role === 'user')
                     ->afterStateUpdated(function ($state, callable $set) {
                         if ($state) {
                             $set('status', 'completed');
