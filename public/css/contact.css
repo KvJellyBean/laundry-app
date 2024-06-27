@@ -2,6 +2,11 @@
     background-color: var(--secondary-color);
 }
 
+.contact.page {
+    padding: 1rem;
+    padding-top: 8%;
+}
+
 .findUsContainer {
     padding: 5rem 0 0;
 }
@@ -36,6 +41,7 @@
 .contact__content .para {
     margin-bottom: 2rem;
     color: var(--text-light);
+    text-align: justify;
 }
 
 .contact__Decsription,
