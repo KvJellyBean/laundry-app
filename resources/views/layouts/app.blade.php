@@ -26,10 +26,9 @@
                 <div class="nav__logo"><a href="/">SARIFNA LAUNDRY.</a></div>
                     <ul class="nav__links" id="nav-links">
                     <li class="link"><a href="/">Home</a></li>
-                    <li class="link"><a href="/#about">About</a></li>
+                    <li class="link"><a href="/about">About</a></li>
                     <li class="link"><a href="/services">Services</a></li>                    
-                    <li class="link"><a href="/#contact">Contact</a></li>
-                    <li class="link"><a href="/#info">Info</a></li>
+                    <li class="link"><a href="/contact">Contact</a></li>
                     @if(Auth::check())
                         <li class="link"><a href="/dashboard">Dashboard</a></li>
                         <li class="nav-item nav-link signin {{ request()->is('signin') ? 'active' : '' }}"><a href="{{ route('logout') }}" 
