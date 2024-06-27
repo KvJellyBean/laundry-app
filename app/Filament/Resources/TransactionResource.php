@@ -192,7 +192,7 @@ class TransactionResource extends Resource
                 TextEntry::make('payment_method'),
                 TextEntry::make('status'),
                 ImageEntry::make('qr_code')
-                    ->defaultImageUrl(asset('images/qr.png'))
+                    ->defaultImageUrl(asset('assets/images/qr.png'))
                     ->label('Bank Transfer'),
                 TextEntry::make('paid_at')->date(),
             ])
