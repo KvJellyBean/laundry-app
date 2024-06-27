@@ -13,7 +13,7 @@
             </div>
 
             <div class="contact__image">
-                <img src="assets/images/setrika.jpg" alt="contact" />
+                <img src="assets/images/laundry.jpg" alt="contact" />
             </div>
 
             <div class="contact__grid">
