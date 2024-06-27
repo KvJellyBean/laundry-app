@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Sarifna Laundry</title>
-        <link rel="icon" href="{{ asset('images/laundryLogo.jpg') }}">
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+        <link rel="icon" href="{{ asset('assets/images/laundrylogo.png') }}">
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <script src="{{ asset('assets/js/apps.js') }}" defer type="text/javascript"></script>
 
     @stack('styles')
