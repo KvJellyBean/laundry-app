@@ -10,6 +10,7 @@ enum OrderStatus: string implements HasLabel, HasColor, HasIcon
     case Processed = 'processed';
     case Completed = 'completed';
     
+    // Mendapatkan label status
     public function getLabel(): ?string
     {
         return match ($this) {
@@ -19,6 +20,7 @@ enum OrderStatus: string implements HasLabel, HasColor, HasIcon
         };
     }
 
+    // Mendapatkan warna status
     public function getColor(): ?string
     {
         return match ($this) {
@@ -28,6 +30,7 @@ enum OrderStatus: string implements HasLabel, HasColor, HasIcon
         };
     }
 
+    // Mendapatkan icon status
     public function getIcon(): ?string
     {
         return match ($this) {

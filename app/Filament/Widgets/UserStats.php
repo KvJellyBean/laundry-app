@@ -12,14 +12,25 @@ use Illuminate\Support\Facades\Auth;
 
 class UserStats extends BaseWidget
 {
+     /**
+     * The sort order of this widget in the UI.
+     *
+     * @var int|null
+     */
     protected static ?int $sort = -3;
 
+    /**
+     * Retrieves statistics based on the user's role.
+     *
+     * @return array
+     */
     protected function getStats(): array
     {
         $user = Auth::user();
 
         if ($user->hasRole('admin') || $user->hasRole('staff')) {
-            return [
+             // For admins and staff, show total users, orders this week, and paid transactions this week
+             return [
                 Stat::make('Total Users', User::where('role', 'user')->count())
                     ->description('Total users registered in the system')
                     ->descriptionIcon('heroicon-o-user-group', IconPosition::Before)
@@ -35,6 +46,7 @@ class UserStats extends BaseWidget
             ];;
         }
 
+        // For regular users, show their orders and paid transactions this month
         return [
             Stat::make('Total Orders This Month', Order::where('user_id', $user->id)->whereBetween('created_at', [now()->startOfMonth(), now()->endOfMonth()])->count())
                 ->description('Total orders created this month')

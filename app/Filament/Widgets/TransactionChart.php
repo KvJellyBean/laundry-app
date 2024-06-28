@@ -8,10 +8,13 @@ use Illuminate\Support\Facades\Auth;
 
 class TransactionChart extends ChartWidget
 {
+    //   Urutan widget ini dalam tampilan.
     protected static ?int $sort = 3;    
 
+    //  Judul atau heading widget.]
     protected static ?string $heading = 'Transaction Overview';
 
+    // Getter grafik
     protected function getData(): array
     {
         $user = Auth::user();
@@ -54,11 +57,13 @@ class TransactionChart extends ChartWidget
         ];
     }
 
+    // Mendapatkan jenis grafik yang akan digunakan (line, bar, dll.).
     protected function getType(): string
     {
         return 'line';
     }
 
+    // Mendapatkan opsi tambahan untuk konfigurasi grafik.
     protected function getOptions(): array
     {
         return [

@@ -12,6 +12,11 @@ use Filament\Facades\Filament;
 
 class Register extends AuthRegister
 {
+    /**
+     * Get the name form component.
+     *
+     * @return TextInput
+     */
     public function form(Form $form): Form
     {
         return $form->schema([
@@ -33,6 +38,11 @@ class Register extends AuthRegister
         ->statePath('data');
     }
 
+    /**
+     * Handles the user registration process.
+     *
+     * @return RegistrationResponse|null
+     */
     public function register(): ?RegistrationResponse
 {
     try {

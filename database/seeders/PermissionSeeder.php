@@ -10,9 +10,11 @@ class PermissionSeeder extends Seeder
 {
     /**
      * Run the database seeds.
+     * Metode ini digunakan untuk mengisi tabel permissions dengan data awal.
      */
     public function run(): void
     {
+        // Daftar permissions yang akan dimasukkan ke dalam database
         $permissions = [
             ['name' => 'edit user', 'guard_name' => 'web'],
             ['name' => 'edit service packages', 'guard_name' => 'web'],
@@ -37,6 +39,7 @@ class PermissionSeeder extends Seeder
             ['name' => 'financial reports', 'guard_name' => 'web'],
         ];
 
+        // Looping melalui setiap permission dan menyimpannya ke dalam database
         foreach ($permissions as $permission) {
             Permission::create($permission);
         }

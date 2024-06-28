@@ -10,9 +10,11 @@ class RoleHasPermissionSeeder extends Seeder
 {
     /**
      * Run the database seeds.
+     * Metode ini digunakan untuk mengisi tabel pivot role_has_permissions dengan data awal.
      */
     public function run(): void
     {
+        // Daftar role dan permission yang akan dimasukkan ke dalam database
         $roleHasPermissions = [
             ['permission_id' => 1, 'role_id' => 1],
             ['permission_id' => 2, 'role_id' => 1],
@@ -53,6 +55,7 @@ class RoleHasPermissionSeeder extends Seeder
             ['permission_id' => 21, 'role_id' => 1],
         ];
 
+        // Memasukkan data roleHasPermissions ke dalam tabel role_has_permissions
         DB::table('role_has_permissions')->insert($roleHasPermissions);
     }
 }

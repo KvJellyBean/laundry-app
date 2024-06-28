@@ -10,8 +10,10 @@ class OrderChart extends ChartWidget
 {
     protected static ?int $sort = 3;
 
+    // Judul atau heading widget
     protected static ?string $heading = 'Order Overview';
 
+    // Getter grafik
     protected function getData(): array
     {
         $user = Auth::user();
@@ -58,11 +60,13 @@ class OrderChart extends ChartWidget
         ];
     }
 
+    // Mendapatkan jenis grafik yang akan digunakan (line, bar, dll.).
     protected function getType(): string
     {
         return 'line';
     }
 
+    // Mendapatkan opsi tambahan untuk konfigurasi grafik.
     protected function getOptions(): array
     {
         return [

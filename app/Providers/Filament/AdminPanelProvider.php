@@ -31,27 +31,28 @@ use Illuminate\Session\Middleware\AuthenticateSession;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 
+// Class untuk mengkonfigurasi panel admin Filament
 class AdminPanelProvider extends PanelProvider
 {
     public function panel(Panel $panel): Panel
     {
         return $panel
-            ->default()
-            ->sidebarCollapsibleOnDesktop()
-            ->id('admin')
-            ->path('dashboard')
-            ->login()
-            ->registration(Register::class)
+            ->default()      // Menggunakan konfigurasi default panel
+            ->sidebarCollapsibleOnDesktop()  // Mengaktifkan kolaps sidebar pada desktop
+            ->id('admin')  // Menetapkan ID panel sebagai 'admin'
+            ->path('dashboard')  // Menetapkan path dashboard
+            ->login()  // Menambahkan login
+            ->registration(Register::class)  // Menambahkan registrasi dengan kelas Register
             ->colors([
-                'primary' => Color::Orange,
+                'primary' => Color::Orange,  // Menetapkan warna utama panel
             ])
-            ->font('Poppins')
-            ->discoverResources(app_path('Filament/Resources'), 'App\\Filament\\Resources')
-            ->discoverPages(app_path('Filament/Pages'), 'App\\Filament\\Pages')
+            ->font('Poppins')  // Menetapkan font panel
+            ->discoverResources(app_path('Filament/Resources'), 'App\\Filament\\Resources')  // Menemukan resources Filament di folder yang ditentukan
+            ->discoverPages(app_path('Filament/Pages'), 'App\\Filament\\Pages')  // Menemukan halaman Filament di folder yang ditentukan
             ->pages([
-                Pages\Dashboard::class,
+                Pages\Dashboard::class,  // Menambahkan halaman dashboard
             ])
-            ->discoverWidgets(app_path('Filament/Widgets'), 'App\\Filament\\Widgets')
+            ->discoverWidgets(app_path('Filament/Widgets'), 'App\\Filament\\Widgets')  // Menemukan widget Filament di folder yang ditentukan
             ->middleware([
                 EncryptCookies::class,
                 AddQueuedCookiesToResponse::class,
@@ -62,9 +63,9 @@ class AdminPanelProvider extends PanelProvider
                 SubstituteBindings::class,
                 DisableBladeIconComponents::class,
                 DispatchServingFilamentEvent::class,
-            ])
+            ])  // Menetapkan middleware yang digunakan oleh panel
             ->authMiddleware([
-                Authenticate::class,
+                Authenticate::class,         // Menetapkan middleware otentikasi
             ])
             ->plugin(FilamentSpatieRolesPermissionsPlugin::make())
             ->navigation(function (NavigationBuilder $builder): NavigationBuilder {
@@ -82,19 +83,19 @@ class AdminPanelProvider extends PanelProvider
                                     ->isActiveWhen(fn (): bool => request()->routeIs('filament.admin.pages.dashboard'))
                                     ->url(fn (): string => Dashboard::getUrl()),
                             ]),
-                        NavigationGroup::make($servicesGroup)
+                        NavigationGroup::make($servicesGroup)  // Membuat grup navigasi untuk Services atau Data Management
                             ->items(array_merge(
                                 ($user && $user->can('roles-permissions')) ? PermissionResource::getNavigationItems() : [],
                                 ($user && $user->can('roles-permissions')) ? RoleResource::getNavigationItems() : [],
                                 ($user && $user->can('view user')) ? UserResource::getNavigationItems() : [],
                                 ($user && $user->can('view service packages')) ? ServicePackageResource::getNavigationItems() : [],
                             )),
-                        NavigationGroup::make($ordersTransactionsGroup)
+                        NavigationGroup::make($ordersTransactionsGroup)      // Membuat grup navigasi untuk Orders & Transactions atau Sales
                             ->items([
                                 ...OrderResource::getNavigationItems(),
                                 ...TransactionResource::getNavigationItems(),
                             ]),
-                        NavigationGroup::make('Reports')
+                        NavigationGroup::make('Reports') // Membuat grup navigasi untuk Reports
                             ->items(
                                 array_merge(
                                     ($user && $user->can('view financial reports')) ? FinancialReportResource::getNavigationItems() : [],

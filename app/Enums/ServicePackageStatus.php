@@ -9,6 +9,7 @@ enum ServicePackageStatus: string implements HasLabel, HasColor, HasIcon
     case Active = 'active';
     case Inactive = 'inactive';
 
+    // Mendapatkan label status
     public function getLabel(): ?string
     {
         return match ($this) {
@@ -16,7 +17,8 @@ enum ServicePackageStatus: string implements HasLabel, HasColor, HasIcon
             self::Inactive => 'Inactive',
         };
     }
-
+    
+    // Mendapatkan warna status
     public function getColor(): ?string
     {
         return match ($this) {
@@ -25,6 +27,7 @@ enum ServicePackageStatus: string implements HasLabel, HasColor, HasIcon
         };
     }
 
+    // Mendapatkan icon status
     public function getIcon(): ?string
     {
         return match ($this) {

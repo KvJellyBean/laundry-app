@@ -18,12 +18,20 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class FinancialReportResource extends Resource
 {
+    // Nama model yang digunakan
     protected static ?string $model = FinancialReport::class;
 
+    // Icon untuk navigasi
     protected static ?string $navigationIcon = 'heroicon-o-bankNotes';
 
+    // Judul untuk navigasi
     protected static ?string $navigationGroup = 'Reports';
 
+     /**
+     * Menentukan apakah sumber daya ini harus didaftarkan di menu navigasi berdasarkan izin pengguna.
+     *
+     * @return bool
+     */
     public static function shouldRegisterNavigation(): bool
     {
         if(auth()->user()->can('view financial reports')){
@@ -33,6 +41,12 @@ class FinancialReportResource extends Resource
         }
     }
 
+    /**
+     * Mendefinisikan bidang formulir untuk membuat dan mengedit laporan keuangan.
+     *
+     * @param Form $form
+     * @return Form
+     */
     public static function form(Form $form): Form
     {
         return $form
@@ -81,6 +95,12 @@ class FinancialReportResource extends Resource
             ]);
     }
 
+     /**
+     * Mendefinisikan kolom dan tindakan untuk tabel laporan keuangan.
+     *
+     * @param Table $table
+     * @return Table
+     */
     public static function table(Table $table): Table
     {
         return $table
@@ -121,6 +141,12 @@ class FinancialReportResource extends Resource
             ]);
     }
 
+    /**
+     * Mendefinisikan tampilan infolist untuk melihat detail laporan keuangan individu.
+     *
+     * @param Infolist $infolist
+     * @return Infolist
+     */
     public static function infolist(Infolist $infolist): Infolist
     {
         return $infolist
@@ -143,6 +169,11 @@ class FinancialReportResource extends Resource
         ];
     }
 
+     /**
+     * Mendefinisikan halaman yang terkait dengan sumber daya laporan keuangan.
+     *
+     * @return array
+     */
     public static function getPages(): array
     {
         return [

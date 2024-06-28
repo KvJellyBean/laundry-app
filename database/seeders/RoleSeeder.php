@@ -10,6 +10,7 @@ class RoleSeeder extends Seeder
     /**
      * Run the database seeds.
      *
+     * Metode ini digunakan untuk mengisi tabel roles dengan data awal.
      * @return void
      */
     public function run()

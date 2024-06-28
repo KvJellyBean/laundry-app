@@ -21,12 +21,20 @@ use Illuminate\Support\Facades\Auth;
 
 class OrderResource extends Resource
 {
+    // Nama model yang digunakan
     protected static ?string $model = Order::class;
 
+    // Icon untuk navigasi
     protected static ?string $navigationIcon = 'heroicon-o-shopping-cart';
 
+    // Judul untuk navigasi
     protected static ?string $navigationGroup = 'Sales';
 
+    /**
+     * Menentukan apakah sumber daya ini harus didaftarkan di menu navigasi berdasarkan izin pengguna.
+     *
+     * @return bool
+     */
     public static function form(Form $form): Form
     {
         $user = auth()->user();
@@ -150,6 +158,7 @@ class OrderResource extends Resource
             ]);
     }
 
+    // Mendefinisikan tabel untuk menampilkan data order
     public static function table(Table $table): Table
     {
         return $table
@@ -220,6 +229,7 @@ class OrderResource extends Resource
             ]);
     }
 
+    // Mendefinisikan infolist untuk melihat detail order
     public static function infolist(Infolist $infolist): Infolist
     {
         return $infolist
@@ -245,6 +255,7 @@ class OrderResource extends Resource
         ];
     }
 
+    // Mendefinisikan halaman yang akan digunakan
     public static function getPages(): array
     {
         return [

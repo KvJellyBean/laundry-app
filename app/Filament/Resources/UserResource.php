@@ -16,19 +16,34 @@ use Spatie\Permission\Models\Role;
 
 class UserResource extends Resource
 {
+    // Nama model yang digunakan
     protected static ?string $model = User::class;
 
+    // Icon untuk navigasi
     protected static ?string $navigationIcon = 'heroicon-o-user';
 
+    // Judul untuk navigasi
     protected static ?string $navigationGroup = 'Data Management';
 
+    // Urutan navigasi
     protected static ?int $navigationSort = 1;
 
+    /**
+     * Menentukan apakah sumber daya ini harus didaftarkan di menu navigasi berdasarkan izin pengguna.
+     *
+     * @return bool
+     */
     public static function shouldRegisterNavigation(): bool
     {
         return auth()->user()->can('view user');
     }
 
+    /**
+     * Mendefinisikan bidang formulir untuk membuat dan mengedit pengguna.
+     *
+     * @param Form $form
+     * @return Form
+     */
     public static function form(Form $form): Form
     {
         return $form
@@ -70,6 +85,12 @@ class UserResource extends Resource
             ]);
     }
 
+    /**
+     * Mendefinisikan tabel untuk menampilkan pengguna.
+     *
+     * @param Table $table
+     * @return Table
+     */
     public static function table(Table $table): Table
     {
         return $table
@@ -125,6 +146,7 @@ class UserResource extends Resource
         ];
     }
     
+    // Mendefinisikan tampilan infolist
     public static function infolist(Infolist $infolist): Infolist
     {
         return $infolist
@@ -141,6 +163,11 @@ class UserResource extends Resource
         ]);
     }
 
+    /**
+     * Mendefinisikan halaman yang tersedia untuk sumber daya ini.
+     *
+     * @return array
+     */
     public static function getPages(): array
     {
         return [

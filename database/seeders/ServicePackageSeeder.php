@@ -9,9 +9,11 @@ class ServicePackageSeeder extends Seeder
 {
     /**
      * Run the database seeds.
+     * Metode ini digunakan untuk mengisi tabel service_packages dengan data awal.
      */
     public function run()
     {
+        // Data paket layanan yang akan dimasukkan ke dalam database
         $data = [
             [
                 'name' => 'Express Wash & Iron',
@@ -87,6 +89,7 @@ class ServicePackageSeeder extends Seeder
             ],
         ];
 
+        // Memasukkan data paket layanan ke dalam tabel service_packages
         DB::table('service_packages')->insert($data);
     }
 }

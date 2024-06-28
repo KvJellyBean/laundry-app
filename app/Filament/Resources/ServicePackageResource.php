@@ -17,14 +17,23 @@ use Illuminate\Support\Facades\Auth;
 
 class ServicePackageResource extends Resource
 {
+    // Nama model yang digunakan
     protected static ?string $model = ServicePackage::class;
 
+    // Icon untuk navigasi
     protected static ?string $navigationIcon = 'heroicon-o-inbox-stack';
 
+    // Judul untuk navigasi
     protected static ?string $navigationGroup = 'Data Management';
 
+    // Urutan navigasi
     protected static ?int $navigationSort = 2;
 
+    /**
+     * Menentukan apakah sumber daya ini harus didaftarkan di menu navigasi berdasarkan izin pengguna.
+     *
+     * @return bool
+     */
     public static function shouldRegisterNavigation(): bool
     {
         if(auth()->user()->can('view service packages')){
@@ -34,6 +43,12 @@ class ServicePackageResource extends Resource
         }
     }
 
+    /**
+     * Mendefinisikan bidang formulir untuk membuat dan mengedit paket layanan.
+     *
+     * @param Form $form
+     * @return Form
+     */
     public static function form(Form $form): Form
     {
         return $form
@@ -66,6 +81,12 @@ class ServicePackageResource extends Resource
             ]);
     }
 
+    /**
+     * Mendefinisikan tabel untuk menampilkan paket layanan.
+     *
+     * @param Table $table
+     * @return Table
+     */
     public static function table(Table $table): Table
     {
         return $table
@@ -104,6 +125,11 @@ class ServicePackageResource extends Resource
             ]);
     }
 
+    /**
+     * Mendefinisikan relasi yang akan dimuat bersama sumber daya.
+     *
+     * @return array
+     */
     public static function getRelations(): array
     {
         return [
@@ -111,6 +137,12 @@ class ServicePackageResource extends Resource
         ];
     }
 
+    /**
+     * Mendefinisikan tampilan infolist untuk melihat detail paket layanan individu.
+     *
+     * @param Infolist $infolist
+     * @return Infolist
+     */
     public static function infolist(Infolist $infolist): Infolist
     {
         return $infolist
@@ -126,6 +158,11 @@ class ServicePackageResource extends Resource
         ]);
     }
 
+    /**
+     * Mendefinisikan halaman yang terkait dengan sumber daya paket layanan.
+     *
+     * @return array
+     */
     public static function getPages(): array
     {
         return [

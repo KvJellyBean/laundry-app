@@ -19,12 +19,21 @@ use Illuminate\Support\Facades\Auth;
 
 class TransactionResource extends Resource
 {
+    // Nama model yang digunakan
     protected static ?string $model = Transaction::class;
 
+    // Icon untuk navigasi
     protected static ?string $navigationIcon = 'heroicon-o-credit-card';
 
+    // Judul untuk navigasi
     protected static ?string $navigationGroup = 'Sales';
 
+    /**
+     * Mendefinisikan bidang formulir untuk membuat dan mengedit transaksi
+     *
+     * @param Form $form
+     * @return Form
+     */
     public static function form(Form $form): Form
     {
         return $form
@@ -102,6 +111,7 @@ class TransactionResource extends Resource
             ]);
     }
 
+    // Mendefinisikan tabel untuk menampilkan transaksi
     public static function table(Table $table): Table
     {
         $user = auth()->user();
@@ -178,6 +188,7 @@ class TransactionResource extends Resource
         ];
     }
 
+    // Mendefinisikan tampilan infolist untuk
     public static function infolist(Infolist $infolist): Infolist
     {
         return $infolist
@@ -199,6 +210,7 @@ class TransactionResource extends Resource
         ]);
     }
 
+    // Mendefinisikan halaman yang akan digunakan
     public static function getPages(): array
     {
         return [
